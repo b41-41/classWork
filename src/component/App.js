@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Login from './Login';
-
+import AppRouter from 'componenet/Router';
+import { authService } from "fbase"
 
 function App() {
-  const [currLogin, setCurrLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(authService.currentUser);
 
   return (
     <>
-      <App /><Login />
+      <AppRouter loggedIn={loggedIn} />
     </>
   );
 }
