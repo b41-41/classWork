@@ -190,6 +190,10 @@
   padding-left: 10px;
 }
 
+.replyImgStyle {
+  transform: scaleX(-1);
+}
+
 /* 작성자 이름 */
 .name {
   text-align: right;

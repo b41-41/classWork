@@ -7,7 +7,6 @@ import AppRouter from 'component/Router';
 import { authService } from "fbase";
 
 function App() {
-
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -21,13 +20,10 @@ function App() {
     })
   }, []);
 
-
   return (
     <>
       {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing.... "}
-      <div class="copyright">
-        <footer>&copy; Class Work {new Date().getFullYear()}</footer>
-      </div>
+      {/* {console.log(`${authService.currentUser.email}`)} */}
     </>
   );
 }

@@ -38,12 +38,12 @@
 
 .menu:hover {
   cursor: pointer;
-  color: #3f3e3e;
+  color: #3f3e3e !important;
 }
 
 .menu_open {
   margin-bottom: 40px;
-  color: #3f3e3e;
+  color: #3f3e3e !important;
 }
 
 .menu_open:hover {

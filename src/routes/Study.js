@@ -1,74 +1,74 @@
 import React from "react";
 
-const Homework = () => {
+const Study = () => {
 
     return (
         <>
             <div class="list">
                 <div class="listForm">
                     <div class="currMenu">
-                        HOMEWORK
+                        STUDY
                     </div>
                     <div class="homeworkListForm">
                         <div class="homeworkListForm_l">
                             <div class="homeworkListDate">
-                                ~09/05
+                                09/18
                             </div>
                         </div>
                         <div class="homeworkListForm_r">
                             <div class="homeworkListTag">
-                                waiting
+                                3과
                             </div>
                             <div class="homeworkListTitle">
-                                말하기 숙제
+                                어휘 읽기
                             </div>
                             <div class="homeworkListTitle">
-                                녹음하세요.
+                                수라바야는 어디에 있어요?
                             </div>
                             <div class="homeworkListMTag">
-                                ✔️ 숙제를 내세요.
+                                📚 pp.126-129
                             </div>
                         </div>
                     </div>
                     <div class="homeworkListForm2">
                         <div class="homeworkListForm_l">
                             <div class="homeworkListDate">
-                                ~09/05
+                                09/13
                             </div>
                         </div>
                         <div class="homeworkListForm_r2">
                             <div class="homeworkListTag">
-                                waiting
+                                2과
                             </div>
                             <div class="homeworkListTitle">
-                                말하기 숙제
+                                문법 쓰기
                             </div>
                             <div class="homeworkListTitle">
-                                녹음하세요.
+                                너무 좋은 날이에요.
                             </div>
                             <div class="homeworkListMTag2">
-                                ✔️ 숙제를 내세요.
+                                📚 pp.110-113
                             </div>
                         </div>
                     </div>
                     <div class="homeworkListForm">
                         <div class="homeworkListForm_l">
                             <div class="homeworkListDate">
-                                ~09/05
+                                09/05
                             </div>
                         </div>
                         <div class="homeworkListForm_r">
                             <div class="homeworkListTag">
-                                waiting
+                                1과
                             </div>
                             <div class="homeworkListTitle">
-                                말하기 숙제
+                                말하기 듣기
                             </div>
                             <div class="homeworkListTitle">
-                                녹음하세요.
+                                오늘은 어디에 갈까요?
                             </div>
                             <div class="homeworkListMTag">
-                                ✔️ 숙제를 내세요.
+                                📚 pp.96-99
                             </div>
                         </div>
                     </div>
@@ -93,23 +93,21 @@ const Homework = () => {
                     </div>
                     <div class="homeworkTitleDate">
                         <div class="homeworkContentTitle">
-                            말하기 숙제: 녹음하세요.
+                            문법 쓰기: 너무 좋은 날이에요.
                         </div>
                         <div class="homeworkDate">
-                            2021.09.21
+                            2021.09.13
                         </div>
                     </div>
                     <div class="homeworkContents">
-                        예시의 내용입니다. 진짜 내용이 아닙니다. 블라블라
-                    </div>
-                    <div class="homeworkSubmit">
-                        <div class="homeworkSubmitL">
-                            <img width="50px" src="./img/send.png" alt="send" />
-                        </div>
-                        <div class="homeworkSubmitR">
-                            숙제 제출
+                        이 수업에서는 날씨와 취미 생활에 대해서 배웠습니다.<br />
+                        자세한 내용은 책을 확인하세요.<br />
+                        날씨 어휘: 비, 번개, 바람, 태풍
+                        <div class="homeworkListMTag">
+                            📚 pp.110-113
                         </div>
                     </div>
+
                 </div>
             </article>
         </>
@@ -117,4 +115,4 @@ const Homework = () => {
 
 };
 
-export default Homework;
+export default Study;

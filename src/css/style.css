@@ -16,6 +16,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 h2 {
@@ -73,6 +74,11 @@ footer {
   box-shadow: 1px 1px 3px #f0ede9;
   color: #050302;
   text-align: center;
+}
+
+.ulMenu {
+  list-style: none;
+  padding-left: 0px;
 }
 
 /* 미디어 쿼리 */
