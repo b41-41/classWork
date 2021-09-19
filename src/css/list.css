@@ -1,0 +1,262 @@
+/* 기본 레이아웃 */
+
+.listForm {
+  width: 90%;
+  margin-left: 5%;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+/* 현재 페이지 안내 */
+
+.currMenu {
+  font-size: 3.5rem;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 5px;
+}
+
+.listClassName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #adb0b5;
+  margin-bottom: 40px;
+}
+
+/* 선생님 정보 */
+/* 레이아웃 */
+.teacherForm {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  border-radius: 15px;
+  padding: 2%;
+  margin-top: 20px;
+  background-color: #e9f4fe;
+  width: 95%;
+  font-weight: bolder;
+  text-align: center;
+  color: red;
+  height: 150px;
+}
+
+.teacherInfo {
+  text-align: left;
+  font-size: 9px;
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
+.teacherJPG {
+  border-radius: 15px;
+}
+
+/* 세부 내용 박스 */
+.teacherTag {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+
+.teacherTag2 {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 2px;
+  color: #87b4ec;
+}
+
+.teacherTag2:hover {
+  cursor: pointer;
+}
+
+.teacherContent {
+  display: block;
+  color: #1d5bcc;
+  font-size: 18px;
+  padding-left: 2px;
+  padding-top: 2px;
+}
+
+/* 간단 공지 */
+.nnhForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.notiForm {
+  width: 95%;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.noticeTitle {
+  padding-bottom: 5px;
+  color: black;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+
+.noticeContent {
+  padding-top: 5px;
+  margin-bottom: 40px;
+  color: #a3a5a8;
+  font-size: 0.7rem;
+}
+
+.notiDate {
+  padding-left: 3px;
+  color: #b7b9bd;
+  font-size: 0.4rem;
+  font-weight: 100;
+}
+
+/* 숙제 */
+
+.homework {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.homeworkColumn1 {
+  padding: 5px;
+  padding-top: 40px;
+  margin: 5px;
+  background-color: #273598;
+  border-radius: 15px;
+  box-shadow: 1px 1px 3px #f0ede9;
+  height: 80px;
+}
+
+.homeworkColumn1:hover {
+  cursor: pointer;
+  background-color: #5b6297;
+}
+
+.homeworkColumn2 {
+  padding: 5px;
+  padding-top: 40px;
+  margin: 5px;
+  background-color: #ee815a;
+  border-radius: 12px;
+  box-shadow: 1px 1px 3px #f0ede9;
+  height: 80px;
+}
+
+.homeworkColumn2:hover {
+  cursor: pointer;
+  background-color: #e6a189;
+}
+
+.hwDate {
+  padding-left: 3px;
+  color: #a3a5a8;
+  font-size: 0.5rem;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* 달력 */
+.calender {
+  width: 95%;
+  margin-top: 15px;
+  padding: 5px;
+  padding-left: 15px;
+  border-radius: 15px;
+  border: 1px solid #f8f8f8;
+  text-align: center;
+}
+
+/* 숙제 리스트 */
+.homeworkListForm {
+  display: grid;
+  margin-top: 30px;
+  padding: 10px;
+  grid-template-columns: 150px 1fr;
+  border-radius: 15px;
+  width: 95%;
+  background-color: #f5effe;
+}
+.homeworkListForm:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.homeworkListForm2 {
+  display: grid;
+  margin-top: 30px;
+  padding: 10px;
+  grid-template-columns: 150px 1fr;
+  border-radius: 15px;
+  width: 95%;
+  background-color: #ffe88a;
+}
+.homeworkListForm2:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+/* 숙제 리스트 오른쪽 부분 */
+
+.homeworkListForm_r {
+  color: #10288f;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.homeworkListForm_r2 {
+  color: #806600;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.homeworkListDate {
+  width: 150px;
+  height: 100px;
+  border-radius: 15px;
+  background-color: white;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 50px;
+  font-size: 35px;
+  font-family: "Rubik", sans-serif;
+}
+
+.homeworkListTag {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 2px;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.homeworkListTitle {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 3px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.homeworkListMTag {
+  padding-top: 15px;
+  font-size: 12px;
+  color: #3e4c88;
+}
+
+.homeworkListMTag2 {
+  padding-top: 15px;
+  font-size: 12px;
+  color: #7c6f39;
+}

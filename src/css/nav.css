@@ -1,0 +1,51 @@
+/* 유저 정보 */
+
+.userInfo {
+  display: block;
+  background-color: #fcfbf7;
+  border-radius: 25px;
+  margin-top: 40px;
+  margin-left: 5%;
+  padding-top: 5px;
+  width: 90%;
+  height: 48px;
+}
+
+.userInfo_name {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.userInfo_info {
+  color: gray;
+  font-size: 10px;
+}
+
+/* 메뉴 관련 레이아웃 */
+
+.menuForm {
+  margin-top: 40px;
+  font-size: 15px;
+  text-align: left;
+  padding-left: 50px;
+  font-family: "Roboto", sans-serif;
+  color: #cac9cd;
+}
+
+.menu {
+  margin-bottom: 40px;
+}
+
+.menu:hover {
+  cursor: pointer;
+  color: #3f3e3e;
+}
+
+.menu_open {
+  margin-bottom: 40px;
+  color: #3f3e3e;
+}
+
+.menu_open:hover {
+  cursor: pointer;
+}

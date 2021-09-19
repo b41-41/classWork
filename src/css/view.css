@@ -1,0 +1,215 @@
+/* 레이아웃 */
+
+.articleForm {
+  /* padding-top: 20px; */
+  padding-bottom: 20px;
+  text-align: left;
+  margin-left: 5%;
+}
+
+/* 알림과 검색창 */
+.noti_search {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.noti_search_n {
+  padding-top: 17px;
+}
+
+.noti_search_s {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+}
+
+.icon {
+  border-radius: 30px;
+  background-color: white;
+  padding: 10px;
+  padding-top: 17px;
+  margin-left: 20px;
+  box-shadow: 1px 1px 4px #eeedeb;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.icon2 {
+  border-radius: 30px;
+  background-color: white;
+  padding: 10px;
+  padding-top: 17px;
+  margin-left: 20px;
+  box-shadow: 1px 1px 4px #eeedeb;
+}
+
+.icon2:hover {
+  cursor: pointer;
+}
+
+.search {
+  height: 30px;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+/* 지난 수업 */
+.lastClass {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 1px 1px 4px #eeedeb;
+  width: 90%;
+}
+
+.lastClass:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+/* 다음 수업 */
+.nextClass {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  border-radius: 15px;
+  background-color: white;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 1px 1px 4px #eeedeb;
+  width: 90%;
+}
+
+.nextClass:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+/* 수업 타이틀, 내용 */
+.class_title {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.class_contents {
+  display: block;
+  color: #c1c4c5;
+}
+
+/* 숙제 내용 제목과 날짜 */
+.homeworkTitleDate {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  font-size: 12px;
+}
+
+.homeworkContentTitle {
+  color: #0e0a07;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.homeworkDate {
+  margin-top: 12px;
+  color: #b7b9bd;
+}
+
+/* 숙제 메뉴 컨텐츠 */
+.homeworkContents {
+  display: block;
+  width: 90%;
+  margin-left: 1%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 4%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 1px 1px 4px #eeedeb;
+}
+
+/* 숙제 제출 버튼 */
+.homeworkSubmit {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  padding-left: 5%;
+  box-shadow: 1px 1px 4px #eeedeb;
+}
+
+.homeworkSubmit:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.homeworkSubmitL {
+  margin-top: 30px;
+  height: 80px;
+  text-align: center;
+}
+
+.homeworkSubmitR {
+  margin-top: 35px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 게시글 리플 폼 */
+.replyForm {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  width: 90%;
+  margin-left: 1%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 4%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 1px 1px 4px #eeedeb;
+}
+
+.replyFormL {
+  text-align: center;
+}
+
+.replyFormR {
+  padding-left: 10px;
+}
+
+/* 작성자 이름 */
+.name {
+  text-align: right;
+  color: #b7b9bd;
+  font-size: 12px;
+  padding-right: 15px;
+}
+
+/* 게시판 폼 */
+.boardForm {
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr 6fr 2fr 1fr;
+  background-color: #fbfaf6;
+  font-size: 1rem;
+}
+
+.boardForm:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+}
