@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Router, Switch, Route } from "react-router-dom";
 import Home from 'routes/Home';
 import Login from 'routes/Login';
 import Homework from 'routes/Homework';
@@ -39,14 +39,11 @@ const AppRouter = ({ isLoggedIn }) => {
             return () => {
                 window.removeEventListener('resize', handleMobileMenu);
             }
-        } console.log(`로그인 화면`);
+        }
     }, []);
 
-    // 현재 메뉴 체크
-    const [currMenu, setCurrMenu] = useState(`MY CLASSES`)
-
     return (
-        <Router>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Switch>
                 {
                     isLoggedIn
@@ -58,21 +55,21 @@ const AppRouter = ({ isLoggedIn }) => {
                             </div>
                             <div class="box">
                                 <nav>
-                                    <Navigation currMenu={currMenu} setCurrMenu={setCurrMenu} />
+                                    <Navigation />
                                 </nav>
-                                < Route currMenu={currMenu} setCurrMenu={setCurrMenu} exact path="/" >
+                                < Route exact path="/" >
                                     <Home />
                                 </Route>
-                                < Route currMenu={currMenu} setCurrMenu={setCurrMenu} exact path="/Homework" >
+                                < Route exact path="/Homework" >
                                     <Homework />
                                 </Route>
-                                < Route currMenu={currMenu} setCurrMenu={setCurrMenu} exact path="/Study" >
+                                < Route exact path="/Study" >
                                     <Study />
                                 </Route>
-                                < Route currMenu={currMenu} setCurrMenu={setCurrMenu} exact path="/Question" >
+                                < Route exact path="/Question" >
                                     <Question />
                                 </Route>
-                                < Route currMenu={currMenu} setCurrMenu={setCurrMenu} exact path="/Notice" >
+                                < Route exact path="/Notice" >
                                     <Notice />
                                 </Route>
                             </div>
@@ -83,7 +80,7 @@ const AppRouter = ({ isLoggedIn }) => {
                         : <Route exact="exact" path="/"><Login /></Route>
                 }
             </Switch>
-        </Router >
+        </BrowserRouter>
     )
 }
 

@@ -91,7 +91,7 @@ const Login = () => {
                 </div>
                 <span class="joinAccount" onClick={toggleAccount}>{newAccount ? "LOGIN 화면으로 이동" : "SIGN UP 화면으로 이동"}</span>
                 <div class="google">
-                    <button name="google" onClick={onSocialClick}>Continue With Google</button>
+                    <button name="google" class="googleBTN" onClick={onSocialClick}>Continue With Google</button>
                 </div>
             </form>
         </>
