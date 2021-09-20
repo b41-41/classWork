@@ -1,6 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { dbService } from 'fbase';
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 const Homework = () => {
+    const [submit, setSubmit] = useState("");
+    const [submits, setSubmits] = useState([]);
+    const getSubmits = async () => {
+
+        const dbSubmits = await getDocs(collection(dbService, "homework"));
+        dbSubmits.forEach((document) => {
+            const submitObject = {
+                ...document.data(),
+                id: document.id,
+            };
+            setSubmits((prev) => [submitObject, ...prev]);
+        });
+    };
+    useEffect(() => {
+        getSubmits();
+    }, []);
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const docRef = await addDoc(collection(dbService, "homework"), {
+                content: submit,
+                date: Date.now()
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+        setSubmit("");
+    }
+    const onChange = (event) => {
+        const { target: { value }, } = event;
+        setSubmit(value);
+    };
 
     return (
         <>
@@ -9,6 +44,17 @@ const Homework = () => {
                     <div class="currMenu">
                         HOMEWORK
                     </div>
+                    {/* 숙제 */}
+                    <form onSubmit={onSubmit}>
+                        <input value={submit} onChange={onChange} type="text" placeholder="testInput" maxLength={120} autoFocus />
+                        <input type="submit" value="Submit" />
+                    </form>
+                    {console.log(submits.map)}
+                    {submits.map(homework =>
+                        <div key={homework.id}>
+                            <h4>{homework.content}</h4>
+                        </div>
+                    )}
                     <div class="homeworkListForm">
                         <div class="homeworkListForm_l">
                             <div class="homeworkListDate">
