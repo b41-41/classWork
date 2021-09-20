@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Link, Router, useHistory } from 'react-router-dom';
+import { Link, Router } from 'react-router-dom';
+import { useHistory } from 'react-router';
+import { authService } from 'fbase';
 
 const Layout = () => {
+
     // 로딩되면 첫 번째 메뉴
     const firstMenu = () => {
         document.querySelector("#MYCLASSES").style.color = "#3f3e3e";
     };
     useEffect(firstMenu, []);
 
+    // 로그아웃 function
+    const history = useHistory();
+    const onLogOutClick = () => {
+        authService.signOut();
+        history.push("/");
+    };
+
     // 메뉴 onClick 이벤트
-    let history = useHistory();
     const [navCurrMenu, setNavCurrMenu] = useState(`MY CLASSES`)
 
     const moveRoute = (menu) => {
@@ -54,6 +63,7 @@ const Layout = () => {
     };
     return (
         <>
+            {console.log(authService.currentUser)}
             <div id="logoLink" onClick={() => { moveRoute('MY CLASSES') }}>
                 <span class="logo">
                     <span class="logoWork">Class</span>
@@ -65,9 +75,10 @@ const Layout = () => {
             </div>
             <div class="navBar">
                 <div class="userInfo">
-                    <span class="userInfo_name">User Name</span><br />
-                    <span class="userInfo_info">User Info</span>
+                    <span class="userInfo_name">{authService.currentUser.displayName} 님</span><br />
+                    <span class="userInfo_info">{authService.currentUser.email}</span>
                 </div>
+                <div class="signOut" onClick={onLogOutClick}>SIGN OUT</div>
                 <div class="menuForm">
                     <ul class="ulMenu">
                         <div class="menu" id="MYCLASSES">

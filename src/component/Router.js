@@ -8,8 +8,8 @@ import Question from 'routes/Question'
 import Notice from 'routes/Notice';
 import Navigation from 'component/Navigation';
 
-const AppRouter = ({ isLoggedIn }) => {
 
+const AppRouter = ({ isLoggedIn }) => {
     // 모바일 메뉴 열기, 닫기 스크립트
     const [navBar, setNavBar] = useState(false);
     const mobileMenuOpen = () => {
@@ -34,9 +34,11 @@ const AppRouter = ({ isLoggedIn }) => {
     };
 
     useEffect(() => {
-        window.addEventListener('resize', handleMobileMenu);
-        return () => {
-            window.removeEventListener('resize', handleMobileMenu);
+        if (isLoggedIn) {
+            window.addEventListener('resize', handleMobileMenu);
+            return () => {
+                window.removeEventListener('resize', handleMobileMenu);
+            }
         }
     }, []);
 

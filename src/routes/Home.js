@@ -13,7 +13,7 @@ const Home = () => {
                     </div>
                     <div class="teacherForm">
                         <div class="teacherPhoto">
-                            <img class="teacherJPG" width="auto" height="150px" src="./img/teacher.jpg" alt="teacher" />
+                            <img class="teacherJPG" width="auto" width="150px" src="./img/teacher.png" alt="teacher" />
                         </div>
                         <div class="teacherInfo">
                             <span class="teacherTag">NAME</span><br />
