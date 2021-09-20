@@ -62,7 +62,6 @@ const Layout = () => {
     };
     return (
         <>
-            {console.log(authService.currentUser)}
             <div id="logoLink" onClick={() => { moveRoute('MY CLASSES') }}>
                 <span class="logo">
                     <span class="logoWork">Class</span>

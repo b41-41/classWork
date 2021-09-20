@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from 'fbase';
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
 
 const Homework = () => {
     const [submit, setSubmit] = useState("");
@@ -24,7 +24,11 @@ const Homework = () => {
         try {
             const docRef = await addDoc(collection(dbService, "homework"), {
                 content: submit,
-                date: Date.now()
+                date: serverTimestamp(),
+                type: `type`,
+                key: `1`,
+                deadline: serverTimestamp()
+
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
@@ -37,6 +41,14 @@ const Homework = () => {
         setSubmit(value);
     };
 
+    // 타임스템프 변환
+    const stampToDate = (timestamp) => {
+        const date = timestamp.toDate();
+        return `${date.getMonth() + 1}/${date.getDate()}`;
+
+    };
+
+
     return (
         <>
             <div class="list">
@@ -46,78 +58,33 @@ const Homework = () => {
                     </div>
                     {/* 숙제 */}
                     <form onSubmit={onSubmit}>
-                        <input value={submit} onChange={onChange} type="text" placeholder="testInput" maxLength={120} autoFocus />
+                        <input value={submit} onChange={onChange} type="text" placeholder="testInput" maxLength={120} />
                         <input type="submit" value="Submit" />
                     </form>
-                    {console.log(submits.map)}
                     {submits.map(homework =>
-                        <div key={homework.id}>
-                            <h4>{homework.content}</h4>
+                        <div class="homeworkListForm" key={homework.id}>
+                            <div class="homeworkListForm_l">
+                                <div class="homeworkListDate">
+                                    ~{stampToDate(homework.deadline)}
+                                </div>
+                            </div>
+                            <div class="homeworkListForm_r">
+                                <div class="homeworkListTag">
+                                    waiting
+                                </div>
+                                <div class="homeworkListTitle">
+                                    {homework.type}
+                                </div>
+                                <div class="homeworkListTitle">
+                                    {homework.content}
+                                </div>
+                                <div class="homeworkListMTag">
+                                    ✔️ 숙제를 내세요.
+                                </div>
+                            </div>
                         </div>
                     )}
-                    <div class="homeworkListForm">
-                        <div class="homeworkListForm_l">
-                            <div class="homeworkListDate">
-                                ~09/05
-                            </div>
-                        </div>
-                        <div class="homeworkListForm_r">
-                            <div class="homeworkListTag">
-                                waiting
-                            </div>
-                            <div class="homeworkListTitle">
-                                말하기 숙제
-                            </div>
-                            <div class="homeworkListTitle">
-                                녹음하세요.
-                            </div>
-                            <div class="homeworkListMTag">
-                                ✔️ 숙제를 내세요.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="homeworkListForm2">
-                        <div class="homeworkListForm_l">
-                            <div class="homeworkListDate">
-                                ~09/05
-                            </div>
-                        </div>
-                        <div class="homeworkListForm_r2">
-                            <div class="homeworkListTag">
-                                waiting
-                            </div>
-                            <div class="homeworkListTitle">
-                                말하기 숙제
-                            </div>
-                            <div class="homeworkListTitle">
-                                녹음하세요.
-                            </div>
-                            <div class="homeworkListMTag2">
-                                ✔️ 숙제를 내세요.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="homeworkListForm">
-                        <div class="homeworkListForm_l">
-                            <div class="homeworkListDate">
-                                ~09/05
-                            </div>
-                        </div>
-                        <div class="homeworkListForm_r">
-                            <div class="homeworkListTag">
-                                waiting
-                            </div>
-                            <div class="homeworkListTitle">
-                                말하기 숙제
-                            </div>
-                            <div class="homeworkListTitle">
-                                녹음하세요.
-                            </div>
-                            <div class="homeworkListMTag">
-                                ✔️ 숙제를 내세요.
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <article>
