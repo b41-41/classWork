@@ -30,6 +30,10 @@ input {
   background: #fdfcfa;
 }
 
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+
 /* 전체 레이아웃 관련 */
 
 nav {
