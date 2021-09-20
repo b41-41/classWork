@@ -19,7 +19,7 @@ const Home = () => {
                             <span class="teacherTag">NAME</span><br />
                             <span class="teacherContent">정다빈</span><br />
                             <span class="teacherTag">E-MAIL</span><br />
-                            <span class="teacherContent">malgolil41 @gmail.com</span><br />
+                            <span class="teacherContent">malgolil41@gmail.com</span><br />
                             <span class="teacherTag2">
                                 <img height="10px" src='./img/mail.png' />
                                 Send Message

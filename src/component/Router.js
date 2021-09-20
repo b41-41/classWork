@@ -56,7 +56,7 @@ const AppRouter = ({ isLoggedIn }) => {
                             </div>
                             <div class="box">
                                 <nav>
-                                    <Navigation />
+                                    <Navigation currMenu={currMenu} setCurrMenu={setCurrMenu} />
                                 </nav>
                                 < Route currMenu={currMenu} setCurrMenu={setCurrMenu} exact path="/" >
                                     <Home />
