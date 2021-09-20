@@ -29,6 +29,13 @@ input {
   border: 0px;
   background: #fdfcfa;
   -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+button,
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
 
 /* 전체 레이아웃 관련 */
