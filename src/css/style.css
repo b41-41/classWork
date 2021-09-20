@@ -28,9 +28,6 @@ h2 {
 input {
   border: 0px;
   background: #fdfcfa;
-}
-
-input[type="submit"] {
   -webkit-appearance: none;
 }
 
