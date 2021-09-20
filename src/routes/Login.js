@@ -87,8 +87,7 @@ const Login = () => {
                     <input
                         type="submit"
                         value={newAccount ? "Create Account" : "LOGIN"}
-                        class="btn"
-                        onClick="loginAction()" />
+                        class="btn" />
                 </div>
                 <span class="joinAccount" onClick={toggleAccount}>{newAccount ? "LOGIN 화면으로 이동" : "SIGN UP 화면으로 이동"}</span>
                 <div class="google">

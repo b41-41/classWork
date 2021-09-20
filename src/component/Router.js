@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from 'routes/Home';
 import Login from 'routes/Login';
 import Homework from 'routes/Homework';
@@ -39,7 +39,7 @@ const AppRouter = ({ isLoggedIn }) => {
             return () => {
                 window.removeEventListener('resize', handleMobileMenu);
             }
-        }
+        } console.log(`로그인 화면`);
     }, []);
 
     // 현재 메뉴 체크

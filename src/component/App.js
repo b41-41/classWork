@@ -23,7 +23,6 @@ function App() {
   return (
     <>
       {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing.... "}
-      {/* {console.log(`${authService.currentUser.email}`)} */}
     </>
   );
 }
