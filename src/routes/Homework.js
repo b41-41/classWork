@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from 'fbase';
-import { collection, addDoc, doc, getDocs, getDoc, orderBy, limit, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, doc, getDocs, getDoc, orderBy, serverTimestamp } from "firebase/firestore";
 
 const Homework = () => {
     //useState
@@ -12,7 +12,7 @@ const Homework = () => {
         title: "숙제를 선택해 주세요.",
         type: "",
     });
-    const [HWkey, setHWkey] = useState(""); //필요없음
+    const [init, setInit] = useState(false);
 
     //숙제 리스트 받아오기
     const homeworkDB = collection(dbService, "homework")
@@ -42,6 +42,7 @@ const Homework = () => {
     //db값 얻어오기 useEffect
     useEffect(() => {
         getSubmits();
+        setInit(true);
     }, []);
 
     //Create DB
@@ -100,7 +101,56 @@ const Homework = () => {
                         <input value={submit} onChange={onChange} type="text" placeholder="testInput" maxLength={120} />
                         <input type="submit" value="Submit" />
                     </form>
-                    {submits.map(homework =>
+
+
+                    {submits.map((homework, i) =>
+                        i % 2 === 0 ?
+                            <div class="homeworkListForm" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
+                                <div class="homeworkListForm_l">
+                                    <div class="homeworkListDate">
+                                        ~{stampToDate(homework.deadline)}
+                                    </div>
+                                </div>
+                                <div class="homeworkListForm_r">
+                                    <div class="homeworkListTag">
+                                        waiting
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {homework.type}
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {homework.content}
+                                    </div>
+                                    <div class="homeworkListMTag">
+                                        {chkDeadline(homework.deadline)}
+                                    </div>
+                                </div>
+                            </div>
+                            :
+                            <div class="homeworkListForm2" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
+                                <div class="homeworkListForm_l">
+                                    <div class="homeworkListDate">
+                                        ~{stampToDate(homework.deadline)}
+                                    </div>
+                                </div>
+                                <div class="homeworkListForm_r">
+                                    <div class="homeworkListTag">
+                                        waiting
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {homework.type}
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {homework.content}
+                                    </div>
+                                    <div class="homeworkListMTag">
+                                        {chkDeadline(homework.deadline)}
+                                    </div>
+                                </div>
+                            </div>
+                    )}
+
+                    {/* {submits.map(homework =>
                         <div class="homeworkListForm" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
                             <div class="homeworkListForm_l">
                                 <div class="homeworkListDate">
@@ -122,7 +172,8 @@ const Homework = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
+                    )} */}
+
 
                 </div>
             </div>
