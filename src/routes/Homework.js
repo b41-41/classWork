@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from 'fbase';
-import { collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, orderBy, limit, serverTimestamp } from "firebase/firestore";
 
 const Homework = () => {
+    //useState
     const [submit, setSubmit] = useState("");
     const [submits, setSubmits] = useState([]);
-    const getSubmits = async () => {
+    const [HWContents, setHWContents] = useState([]);
+    const [HWkey, setHWkey] = useState("");
 
-        const dbSubmits = await getDocs(collection(dbService, "homework"));
+    //숙제 리스트 받아오기
+    const homeworkDB = collection(dbService, "homework")
+    const getSubmits = async () => {
+        const dbSubmits = await getDocs(homeworkDB, orderBy("deadline"));
         dbSubmits.forEach((document) => {
             const submitObject = {
                 ...document.data(),
                 id: document.id,
             };
-            setSubmits((prev) => [submitObject, ...prev]);
+            setSubmits((prev) => [submitObject, ...prev].sort(function (a, b) { return b.deadline - a.deadline }));
         });
     };
+
+    //본문 내용 읽어오기
+    //위에서 불러온 db값을 변수에 저장해놓고 클릭하면 본문으로 출력하는 방식으로 해봅시다. 
+
+    //db값 얻어오기 useEffect
     useEffect(() => {
         getSubmits();
     }, []);
+
+    //Create DB
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -45,10 +57,20 @@ const Homework = () => {
     const stampToDate = (timestamp) => {
         const date = timestamp.toDate();
         return `${date.getMonth() + 1}/${date.getDate()}`;
-
     };
 
 
+    //숙제 마감 여부 계산
+    const chkDeadline = (deadline) => {
+        const today = new Date();
+        if (deadline.toDate() < today) {
+            return `🔚 마감 되었습니다.`
+        } else {
+            return `✔ 숙제를 내세요.`
+        }
+    }
+
+    // 본 내용
     return (
         <>
             <div class="list">
@@ -79,7 +101,7 @@ const Homework = () => {
                                     {homework.content}
                                 </div>
                                 <div class="homeworkListMTag">
-                                    ✔️ 숙제를 내세요.
+                                    {chkDeadline(homework.deadline)}
                                 </div>
                             </div>
                         </div>
