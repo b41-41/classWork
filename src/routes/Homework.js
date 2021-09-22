@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from 'fbase';
-import { collection, addDoc, getDocs, getDoc, orderBy, limit, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, doc, getDocs, getDoc, orderBy, limit, serverTimestamp } from "firebase/firestore";
 
 const Homework = () => {
     //useState
     const [submit, setSubmit] = useState("");
     const [submits, setSubmits] = useState([]);
-    const [HWContents, setHWContents] = useState([]);
-    const [HWkey, setHWkey] = useState("");
+    const [HWContents, setHWContents] = useState({
+        content: "숙제를 선택하면 내용이 나옵니다. ",
+        date: null,
+        title: "숙제를 선택해 주세요.",
+        type: "",
+    });
+    const [HWkey, setHWkey] = useState(""); //필요없음
 
     //숙제 리스트 받아오기
     const homeworkDB = collection(dbService, "homework")
@@ -22,8 +27,17 @@ const Homework = () => {
         });
     };
 
-    //본문 내용 읽어오기
-    //위에서 불러온 db값을 변수에 저장해놓고 클릭하면 본문으로 출력하는 방식으로 해봅시다. 
+    //본문 내용 읽어오기 (onClick Event)
+    const sendHWContents = async (key) => {
+        try {
+            const HWref = doc(dbService, "homework", `${key}`);
+            const getHWContents = await getDoc(HWref);
+            console.log(getHWContents.data());  // 클릭한 부분의 값을 잘 가져오고 있음.
+            setHWContents(getHWContents.data());
+        } catch (e) {
+            console.error("Error onClick: ", e);
+        }
+    };
 
     //db값 얻어오기 useEffect
     useEffect(() => {
@@ -38,7 +52,7 @@ const Homework = () => {
                 content: submit,
                 date: serverTimestamp(),
                 type: `type`,
-                key: `1`,
+                title: submit,
                 deadline: serverTimestamp()
 
             });
@@ -55,8 +69,11 @@ const Homework = () => {
 
     // 타임스템프 변환
     const stampToDate = (timestamp) => {
-        const date = timestamp.toDate();
-        return `${date.getMonth() + 1}/${date.getDate()}`;
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+        return;
     };
 
 
@@ -84,7 +101,7 @@ const Homework = () => {
                         <input type="submit" value="Submit" />
                     </form>
                     {submits.map(homework =>
-                        <div class="homeworkListForm" key={homework.id}>
+                        <div class="homeworkListForm" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
                             <div class="homeworkListForm_l">
                                 <div class="homeworkListDate">
                                     ~{stampToDate(homework.deadline)}
@@ -128,14 +145,14 @@ const Homework = () => {
                     </div>
                     <div class="homeworkTitleDate">
                         <div class="homeworkContentTitle">
-                            말하기 숙제: 녹음하세요.
+                            {HWContents.type} {HWContents.title}
                         </div>
                         <div class="homeworkDate">
-                            2021.09.21
+                            {stampToDate(HWContents.date)}
                         </div>
                     </div>
                     <div class="homeworkContents">
-                        예시의 내용입니다. 진짜 내용이 아닙니다. 블라블라
+                        {HWContents.content}
                     </div>
                     <div class="homeworkSubmit">
                         <div class="homeworkSubmitL">
