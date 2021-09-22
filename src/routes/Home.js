@@ -21,8 +21,7 @@ const Home = () => {
                             <span class="teacherTag">E-MAIL</span><br />
                             <span class="teacherContent">malgolil41@gmail.com</span><br />
                             <span class="teacherTag2">
-                                <img height="10px" src='./img/mail.png' />
-                                Send Message
+                                ️ ✉️ Send Message
                             </span>
                         </div></div>
                     <h2>NOTICE & HOMEWORK</h2>
