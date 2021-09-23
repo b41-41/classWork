@@ -1,6 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { dbService } from 'fbase';
+import { collection, doc, getDocs, getDoc, orderBy } from "firebase/firestore";
 
 const Study = () => {
+    //useState
+    const [submit, setSubmit] = useState("");
+    const [submits, setSubmits] = useState([]);
+    const [studyContents, setStudyContents] = useState({
+        chapter: "1과",
+        content: "내용입니다.",
+        date: null,
+        title: "보고 싶은 내용을 선택하세요.",
+        type: "",
+        page: "page",
+    });
+
+    //숙제 리스트 받아오기
+    const homeworkDB = collection(dbService, "study")
+    const getSubmits = async () => {
+        const dbSubmits = await getDocs(homeworkDB);
+        dbSubmits.forEach((document) => {
+            const submitObject = {
+                ...document.data(),
+                id: document.id,
+            };
+            setSubmits((prev) => [submitObject, ...prev]);
+        });
+    };
+
+    //본문 내용 읽어오기 (onClick Event)
+    const sendStudyContents = async (key) => {
+        try {
+            const studyRef = doc(dbService, "study", `${key}`);
+            const getStudyContents = await getDoc(studyRef);
+            setStudyContents(getStudyContents.data());
+        } catch (e) {
+            console.error("Error onClick: ", e);
+        }
+    };
+
+    //db값 얻어오기 useEffect
+    useEffect(() => {
+        getSubmits();
+    }, []);
+
+    // 타임스템프 변환
+    const stampToDate = (timestamp) => {
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+        return;
+    };
+
+    // 타임스템프 to date (yy.mm.dd)
+    const stampToDate_yymmdd = (timestamp) => {
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+        }
+        return;
+    };
+
 
     return (
         <>
@@ -9,69 +70,53 @@ const Study = () => {
                     <div class="currMenu">
                         STUDY
                     </div>
-                    <div class="homeworkListForm">
-                        <div class="homeworkListForm_l">
-                            <div class="homeworkListDate">
-                                09/18
+                    {submits.map((study, i) =>
+                        i % 2 === 0 ?
+                            <div class="homeworkListForm" onClick={() => { sendStudyContents(study.id) }}>
+                                <div class="homeworkListForm_l">
+                                    <div class="homeworkListDate">
+                                        {stampToDate(study.date)}
+                                    </div>
+                                </div>
+                                <div class="homeworkListForm_r">
+                                    <div class="homeworkListTag">
+                                        {study.chapter}
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {study.type}
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {study.type}
+                                    </div>
+                                    <div class="homeworkListMTag">
+                                        📚 {study.page}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="homeworkListForm_r">
-                            <div class="homeworkListTag">
-                                3과
+                            :
+                            <div class="homeworkListForm2" onClick={() => { sendStudyContents(study.id) }}>
+                                <div class="homeworkListForm_l">
+                                    <div class="homeworkListDate">
+                                        {stampToDate(study.date)}
+                                    </div>
+                                </div>
+                                <div class="homeworkListForm_r">
+                                    <div class="homeworkListTag">
+                                        {study.chapter}
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {study.type}
+                                    </div>
+                                    <div class="homeworkListTitle">
+                                        {study.type}
+                                    </div>
+                                    <div class="homeworkListMTag">
+                                        📚 {study.page}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="homeworkListTitle">
-                                어휘 읽기
-                            </div>
-                            <div class="homeworkListTitle">
-                                수라바야는 어디에 있어요?
-                            </div>
-                            <div class="homeworkListMTag">
-                                📚 pp.126-129
-                            </div>
-                        </div>
-                    </div>
-                    <div class="homeworkListForm2">
-                        <div class="homeworkListForm_l">
-                            <div class="homeworkListDate">
-                                09/13
-                            </div>
-                        </div>
-                        <div class="homeworkListForm_r2">
-                            <div class="homeworkListTag">
-                                2과
-                            </div>
-                            <div class="homeworkListTitle">
-                                문법 쓰기
-                            </div>
-                            <div class="homeworkListTitle">
-                                너무 좋은 날이에요.
-                            </div>
-                            <div class="homeworkListMTag2">
-                                📚 pp.110-113
-                            </div>
-                        </div>
-                    </div>
-                    <div class="homeworkListForm">
-                        <div class="homeworkListForm_l">
-                            <div class="homeworkListDate">
-                                09/05
-                            </div>
-                        </div>
-                        <div class="homeworkListForm_r">
-                            <div class="homeworkListTag">
-                                1과
-                            </div>
-                            <div class="homeworkListTitle">
-                                말하기 듣기
-                            </div>
-                            <div class="homeworkListTitle">
-                                오늘은 어디에 갈까요?
-                            </div>
-                            <div class="homeworkListMTag">
-                                📚 pp.96-99
-                            </div>
-                        </div>
-                    </div>
+                    )}
+
                 </div>
             </div>
             <article>
@@ -93,18 +138,16 @@ const Study = () => {
                     </div>
                     <div class="homeworkTitleDate">
                         <div class="homeworkContentTitle">
-                            문법 쓰기: 너무 좋은 날이에요.
+                            {studyContents.title}
                         </div>
                         <div class="homeworkDate">
-                            2021.09.13
+                            {stampToDate_yymmdd(studyContents.date)}
                         </div>
                     </div>
                     <div class="homeworkContents">
-                        이 수업에서는 날씨와 취미 생활에 대해서 배웠습니다.<br />
-                        자세한 내용은 책을 확인하세요.<br />
-                        날씨 어휘: 비, 번개, 바람, 태풍
+                        {studyContents.content}
                         <div class="homeworkListMTag">
-                            📚 pp.110-113
+                            📚 {studyContents.page}
                         </div>
                     </div>
 

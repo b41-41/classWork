@@ -12,7 +12,6 @@ const Homework = () => {
         title: "숙제를 선택해 주세요.",
         type: "",
     });
-    const [init, setInit] = useState(false);
 
     //숙제 리스트 받아오기
     const homeworkDB = collection(dbService, "homework")
@@ -42,7 +41,6 @@ const Homework = () => {
     //db값 얻어오기 useEffect
     useEffect(() => {
         getSubmits();
-        setInit(true);
     }, []);
 
     //Create DB
@@ -77,6 +75,14 @@ const Homework = () => {
         return;
     };
 
+    // 타임스템프 to date (yy.mm.dd)
+    const stampToDate_yymmdd = (timestamp) => {
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+        }
+        return;
+    };
 
     //숙제 마감 여부 계산
     const chkDeadline = (deadline) => {
@@ -91,18 +97,19 @@ const Homework = () => {
     // 본 내용
     return (
         <>
+            {/* 중앙 레이아웃 */}
             <div class="list">
                 <div class="listForm">
                     <div class="currMenu">
                         HOMEWORK
                     </div>
-                    {/* 숙제 */}
+                    {/* 글쓰기(임시) */}
                     <form onSubmit={onSubmit}>
                         <input value={submit} onChange={onChange} type="text" placeholder="testInput" maxLength={120} />
                         <input type="submit" value="Submit" />
                     </form>
 
-
+                    {/* 숙제 리스트 */}
                     {submits.map((homework, i) =>
                         i % 2 === 0 ?
                             <div class="homeworkListForm" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
@@ -150,33 +157,10 @@ const Homework = () => {
                             </div>
                     )}
 
-                    {/* {submits.map(homework =>
-                        <div class="homeworkListForm" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
-                            <div class="homeworkListForm_l">
-                                <div class="homeworkListDate">
-                                    ~{stampToDate(homework.deadline)}
-                                </div>
-                            </div>
-                            <div class="homeworkListForm_r">
-                                <div class="homeworkListTag">
-                                    waiting
-                                </div>
-                                <div class="homeworkListTitle">
-                                    {homework.type}
-                                </div>
-                                <div class="homeworkListTitle">
-                                    {homework.content}
-                                </div>
-                                <div class="homeworkListMTag">
-                                    {chkDeadline(homework.deadline)}
-                                </div>
-                            </div>
-                        </div>
-                    )} */}
-
-
                 </div>
             </div>
+
+            {/* 우측 레이아웃 */}
             <article>
                 <div class="articleForm">
                     <div class="noti_search">
@@ -199,7 +183,7 @@ const Homework = () => {
                             {HWContents.type} {HWContents.title}
                         </div>
                         <div class="homeworkDate">
-                            {stampToDate(HWContents.date)}
+                            {stampToDate_yymmdd(HWContents.date)}
                         </div>
                     </div>
                     <div class="homeworkContents">
