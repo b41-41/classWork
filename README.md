@@ -1,4 +1,4 @@
-# ClassWork v0.0.1
+# ClassWork v0.0.2
 
 ## 🖊 서비스 소개
 
@@ -6,7 +6,8 @@
 
 배포: 배포일미정
 
+[URL : https://b41-41.github.io/classWork/](https://b41-41.github.io/classWork/)
+
 [개발 배경]()
 
 [WIKI]()
-

@@ -203,8 +203,13 @@
 }
 
 /* 게시판 폼 */
+
+board {
+  margin-top: 15px;
+}
+
 .boardForm {
-  margin-top: 25px;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 15px;
   display: grid;

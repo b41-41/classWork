@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from 'fbase';
-import { collection, doc, getDocs, getDoc, orderBy } from "firebase/firestore";
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 
 const Study = () => {
     //useState

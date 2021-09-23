@@ -1,5 +1,83 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { dbService } from 'fbase';
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+
 const Question = () => {
+
+    //useState
+    const [submit, setSubmit] = useState("");
+    const [submits, setSubmits] = useState([]);
+    const [questionContents, setQuestionContents] = useState({
+        content: "내용입니다.",
+        date: null,
+        title: "보고 싶은 내용을 선택하세요.",
+        secret: false,
+        page: "page",
+        writer: "작성자",
+    });
+    const [questionReplys, setQuestionReplys] = useState([]);
+
+
+    //숙제 리스트 받아오기
+    const questionDB = collection(dbService, "question")
+    const getSubmits = async () => {
+        const dbSubmits = await getDocs(questionDB);
+        dbSubmits.forEach((document) => {
+            const submitObject = {
+                ...document.data(),
+                id: document.id,
+            };
+            setSubmits((prev) => [submitObject, ...prev]);
+        });
+    };
+
+    //본문 내용 읽어오기 (onClick Event)
+    const sendQuestionContents = async (key) => {
+        try {
+            const questionRef = doc(dbService, "question", `${key}`);
+            const getQuestionContents = await getDoc(questionRef);
+            setQuestionContents(getQuestionContents.data());
+        } catch (e) {
+            console.error("Error onClick: ", e);
+        }
+    };
+
+    // 댓글 읽어오기(본문 내용 읽어오기에 이어서...)
+    // const questionReplyDB = collection(dbService, "question/reply")
+    // const getQuestionReplys = async () => {
+    //     const dbQuestionReplys = await getDocs(questionReplyDB);
+    //     dbQuestionReplys.forEach((document) => {
+    //         const questionReplyObject = {
+    //             ...document.data(),
+    //             id: document.id,
+    //         };
+    //         setQuestionReplys((prev) => [questionReplyObject, ...prev]);
+    //     });
+    // };
+
+    //db값 얻어오기 useEffect
+    useEffect(() => {
+        getSubmits();
+        // getQuestionReplys();
+    }, []);
+
+    // 타임스템프 변환
+    const stampToDate = (timestamp) => {
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+        return;
+    };
+
+    // 타임스템프 to date (yy.mm.dd)
+    const stampToDate_yymmdd = (timestamp) => {
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+        }
+        return;
+    };
 
     return (
         <>
@@ -8,12 +86,17 @@ const Question = () => {
                     <div class="currMenu">
                         QUESTION
                     </div>
-                    <div class="boardForm">
-                        <div class="boardListNumber">001</div>
-                        <div class="boardListTitle">선생님 안녕하세요.</div>
-                        <div class="boardListDate">2021.09.13</div>
-                        <div class="boardListWriter">린짱</div>
-                    </div>
+                    <board>
+                        {submits.map(question =>
+                            <div class="boardForm" onClick={() => { sendQuestionContents(question.id) }}>
+                                <div class="boardListNumber">{question.number}</div>
+                                <div class="boardListTitle">{question.title}</div>
+                                <div class="boardListDate">{stampToDate_yymmdd(question.date)}</div>
+                                <div class="boardListWriter">{question.writer}</div>
+                            </div>
+                        )}
+
+                    </board>
                 </div>
             </div>
             <article>
@@ -35,17 +118,16 @@ const Question = () => {
                     </div>
                     <div class="homeworkTitleDate">
                         <div class="homeworkContentTitle">
-                            선생님 안녕하세요.
+                            {questionContents.title}
                         </div>
                         <div class="homeworkDate">
-                            2021.09.13
+                            {stampToDate_yymmdd(questionContents.date)}
                         </div>
                     </div>
                     <div class="homeworkContents">
-                        이번 수업에 빠져서 질문이 있는데요.<br />
-                        'V-(으)ㄹ만 하다'는 'V-(으)면 좋다'와 의미가 같나요?
+                        {questionContents.content}
                         <div class="name">
-                            린짱
+                            {questionContents.writer}
                         </div>
                     </div>
                     <div class="replyForm">
