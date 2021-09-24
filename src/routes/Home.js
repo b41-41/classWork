@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { dbService } from 'fbase';
+import { collection, getDocs } from "firebase/firestore";
 
 const Home = () => {
+    const [studyContents, setStudyContents] = useState([]);
+
+    //최근 수업 정보 받아오기 
+    const sendStudyContents = async () => {
+        try {
+            const studyRef = collection(dbService, "study");
+            const getStudyContents = await getDocs(studyRef);
+            getStudyContents.forEach((document) => {
+                const studyObject = {
+                    ...document.data(),
+                    id: document.id,
+                };
+                setStudyContents((prev) => [studyObject, ...prev].sort(function (a, b) { return b.date - a.date }));
+            });
+        } catch (e) {
+            console.error("Error onClick: ", e);
+        }
+    };
+
+    useEffect(() => {
+        sendStudyContents();
+    }, []);
+
     return (
         <>
             <div class="list">
@@ -83,14 +108,14 @@ const Home = () => {
                         </div>
                         <div class="lastClass_content">
                             <span class="class_title">지난 수업</span>
-                            <span class="class_contents">수업내용</span>
+                            <div class="class_contents">{studyContents.map((data, i) => i === 0 ? data.title : '')}</div>
                         </div>
                     </div>
                     <h2>NEXT CLASS</h2>
                     <div class="nextClass">
                         <div class="nextClass_content">
-                            <span class="class_title">지난 수업</span>
-                            <span class="class_contents">수업내용</span>
+                            <span class="class_title">다음 수업</span>
+                            <span class="class_contents">{studyContents.map((data, i) => i === 0 ? data.next : '')}</span>
                         </div>
                         <div class="nextClass_icon">
                             <img height="100px" src='./img/nextclass.png' alt="next class" />

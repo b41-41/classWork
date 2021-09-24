@@ -68,6 +68,14 @@
   width: 90%;
 }
 
+.lastClass.icon {
+  width: 100%;
+}
+
+.lastClass.contents {
+  width: 100%;
+}
+
 .lastClass:hover {
   cursor: pointer;
   border: 1px solid gray;
@@ -93,14 +101,21 @@
 /* 수업 타이틀, 내용 */
 .class_title {
   display: block;
+  padding-top: 20px;
   margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 1.5rem;
+  color: #c1c4c5;
 }
 
 .class_contents {
-  display: block;
-  color: #c1c4c5;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: inline-block;
+  color: black;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 28px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 /* 숙제 내용 제목과 날짜 */

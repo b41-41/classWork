@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import 'css/login.css';
-import { authService, googleAuth } from 'fbase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 
 

@@ -4,7 +4,6 @@ import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 
 const Study = () => {
     //useState
-    const [submit, setSubmit] = useState("");
     const [submits, setSubmits] = useState([]);
     const [studyContents, setStudyContents] = useState({
         chapter: "1과",

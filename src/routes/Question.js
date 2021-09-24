@@ -5,7 +5,6 @@ import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 const Question = () => {
 
     //useState
-    const [submit, setSubmit] = useState("");
     const [submits, setSubmits] = useState([]);
     const [questionContents, setQuestionContents] = useState({
         content: "내용입니다.",
