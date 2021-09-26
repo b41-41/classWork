@@ -43,7 +43,8 @@ const AppRouter = ({ isLoggedIn }) => {
     }, []);
 
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        // <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename="/classWork">
             <Switch>
                 {
                     isLoggedIn
