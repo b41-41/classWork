@@ -84,6 +84,7 @@
 .nnhForm {
   display: flex;
   justify-content: space-between;
+  height: 265px;
 }
 
 .nnhForm__notice {
@@ -93,16 +94,19 @@
   list-style: none;
   width: 49%;
   justify-content: center;
+  margin: 0;
+  overflow-y: auto;
 }
 
 .nnhForm__notice--content {
   transition: 400ms;
   margin: 15px 0;
+  list-style: none;
 }
 
 .nnhForm__notice--content:hover {
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
 
 .nnhForm__notice--content-titlebox {
@@ -139,6 +143,7 @@
   list-style: none;
   padding: 0;
   width: 49%;
+  margin: 0;
 }
 
 .nnhForm__homework--box {
@@ -187,88 +192,6 @@
 
 .nnhForm__homework--box-date {
   display: inline-block;
-  padding-left: 3px;
-  color: #a3a5a8;
-  font-size: 0.5rem;
-  background-color: white;
-  opacity: 0.7;
-  border-radius: 5px;
-  padding: 3px;
-}
-
-.nnnForms__notice--content {
-  list-style: none;
-}
-
-.notiForm {
-  width: 95%;
-  padding: 5px;
-  margin-right: 20px;
-}
-
-.noticeTitle {
-  padding-bottom: 5px;
-  color: black;
-  font-size: 0.8rem;
-  font-weight: bolder;
-}
-
-.noticeContent {
-  padding-top: 5px;
-  margin-bottom: 40px;
-  color: #a3a5a8;
-  font-size: 0.7rem;
-}
-
-.notiDate {
-  padding-left: 3px;
-  color: #b7b9bd;
-  font-size: 0.4rem;
-  font-weight: 100;
-}
-
-/* 숙제 */
-
-.homework {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  color: white;
-  font-size: 1rem;
-  text-align: center;
-  font-weight: bold;
-}
-
-.homeworkColumn1 {
-  padding: 5px;
-  padding-top: 40px;
-  margin: 5px;
-  background-color: #273598;
-  border-radius: 15px;
-  box-shadow: 1px 1px 3px #f0ede9;
-  height: 80px;
-}
-
-.homeworkColumn1:hover {
-  cursor: pointer;
-  background-color: #5b6297;
-}
-
-.homeworkColumn2 {
-  padding: 5px;
-  padding-top: 40px;
-  margin: 5px;
-  background-color: #ee815a;
-  border-radius: 12px;
-  box-shadow: 1px 1px 3px #f0ede9;
-  height: 80px;
-}
-
-.homeworkColumn2:hover {
-  cursor: pointer;
-  background-color: #e6a189;
-}
-
-.hwDate {
   padding-left: 3px;
   color: #a3a5a8;
   font-size: 0.5rem;

@@ -50,36 +50,15 @@ const Home = () => {
                             </span>
                         </div></div>
                     <h2>NOTICE & HOMEWORK</h2>
-                    {/* <div class="nnhForm">
-                        <div class="notiForm">
-                            <div class="noticeTitle">
-                                다음주 월요일부터 수요일까지는 쉽니다.
-                                <span class="notiDate">2021.09.21</span>
-                            </div>
-                            <div class="noticeContent">
-                                지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.
-                            </div>
-                            <div class="noticeTitle">
-                                반갑습니다 여러분
-                                <span class="notiDate">2021.09.21</span>
-                            </div>
-                            <div class="noticeContent">
-                                저는 선생님입니다.여러분과 만나뵙게 되어서 정말 반갑습니다.잘 부탁합니다.
-                            </div>
-                        </div>
-                        <div class="homework">
-                            <div class="homeworkColumn1">
-                                말하기 숙제<br />
-                                <span class="hwDate">2021.09.21</span>
-                            </div>
-                            <div class="homeworkColumn2">
-                                쓰기 숙제<br />
-                                <span class="hwDate">2021.09.21</span>
-                            </div>
-                        </div>
-                    </div> */}
                     <div class="nnhForm">
                         <ul class="nnhForm__notice">
+                            <li class="nnhForm__notice--content">
+                                <div class="nnhForm__notice--content-titlebox">
+                                    <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
+                                    <span class="nnhForm__notice--content-date">2021.09.21</span>
+                                </div>
+                                <span class="nnhForm__notice--content-text">지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.</span>
+                            </li>
                             <li class="nnhForm__notice--content">
                                 <div class="nnhForm__notice--content-titlebox">
                                     <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
