@@ -50,7 +50,7 @@ const Home = () => {
                             </span>
                         </div></div>
                     <h2>NOTICE & HOMEWORK</h2>
-                    <div class="nnhForm">
+                    {/* <div class="nnhForm">
                         <div class="notiForm">
                             <div class="noticeTitle">
                                 다음주 월요일부터 수요일까지는 쉽니다.
@@ -77,6 +77,34 @@ const Home = () => {
                                 <span class="hwDate">2021.09.21</span>
                             </div>
                         </div>
+                    </div> */}
+                    <div class="nnhForm">
+                        <ul class="nnhForm__notice">
+                            <li class="nnhForm__notice--content">
+                                <div class="nnhForm__notice--content-titlebox">
+                                    <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
+                                    <span class="nnhForm__notice--content-date">2021.09.21</span>
+                                </div>
+                                <span class="nnhForm__notice--content-text">지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.</span>
+                            </li>
+                            <li class="nnhForm__notice--content">
+                                <div class="nnhForm__notice--content-titlebox">
+                                    <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
+                                    <span class="nnhForm__notice--content-date">2021.09.21</span>
+                                </div>
+                                <span class="nnhForm__notice--content-text">지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.</span>
+                            </li>
+                        </ul>
+                        <ul class="nnhForm__homework">
+                            <li class="nnhForm__homework--box">
+                                <span class="nnhForm__homework--box-title">말하기 숙제</span>
+                                <span class="nnhForm__homework--box-date">2021.09.21</span>
+                            </li>
+                            <li class="nnhForm__homework--box2">
+                                <span class="nnhForm__homework--box-title">말하기 숙제</span>
+                                <span class="nnhForm__homework--box-date">2021.09.21</span>
+                            </li>
+                        </ul>
                     </div>
                     <h2>CALENDER</h2>
                     <div class="calender">
