@@ -90,12 +90,11 @@
 .nnhForm__notice {
   display: flex;
   flex-direction: column;
-  padding-left: 0;
+  padding: 30px 0;
   list-style: none;
   width: 49%;
   justify-content: center;
   margin: 0;
-  overflow-y: auto;
 }
 
 .nnhForm__notice--content {
@@ -300,4 +299,25 @@
   padding-top: 15px;
   font-size: 12px;
   color: #7c6f39;
+}
+
+/* 게시판 폼 */
+
+board {
+  margin-top: 15px;
+}
+
+.boardForm {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fbfaf6;
+  font-size: 1rem;
+}
+
+.boardForm:hover {
+  cursor: pointer;
+  border: 1px solid gray;
 }

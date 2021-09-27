@@ -216,24 +216,3 @@
   font-size: 12px;
   padding-right: 15px;
 }
-
-/* 게시판 폼 */
-
-board {
-  margin-top: 15px;
-}
-
-.boardForm {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 15px;
-  display: grid;
-  grid-template-columns: 1fr 6fr 2fr 1fr;
-  background-color: #fbfaf6;
-  font-size: 1rem;
-}
-
-.boardForm:hover {
-  cursor: pointer;
-  border: 1px solid gray;
-}

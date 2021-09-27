@@ -13,7 +13,6 @@ const Notice = () => {
                         <div class="boardListNumber">001</div>
                         <div class="boardListTitle">다음주 월요일부터 수요일까지는 쉽니다.</div>
                         <div class="boardListDate">2021.09.21</div>
-                        <div class="boardListWriter">선생님</div>
                     </div>
                 </div>
             </div>
