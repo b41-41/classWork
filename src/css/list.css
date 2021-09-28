@@ -321,3 +321,7 @@ board {
   cursor: pointer;
   border: 1px solid gray;
 }
+
+.boardListWriter {
+  margin: 0 15px;
+}

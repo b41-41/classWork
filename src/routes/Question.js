@@ -90,8 +90,10 @@ const Question = () => {
                             <div class="boardForm" onClick={() => { sendQuestionContents(question.id) }}>
                                 <div class="boardListNumber">{question.number}</div>
                                 <div class="boardListTitle">{question.title}</div>
-                                <div class="boardListDate">{stampToDate_yymmdd(question.date)}</div>
-                                <div class="boardListWriter">{question.writer}</div>
+                                <div class="boardListDate">
+                                    {stampToDate_yymmdd(question.date)}
+                                    <span class="boardListWriter">{question.writer}</span>
+                                </div>
                             </div>
                         )}
                     </board>
