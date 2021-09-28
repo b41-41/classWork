@@ -142,9 +142,7 @@
   display: block;
   width: 90%;
   margin-left: 1%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 4%;
+  padding: 15px 4%;
   margin-bottom: 15px;
   margin-top: 15px;
   border-radius: 15px;

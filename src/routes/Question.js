@@ -94,7 +94,6 @@ const Question = () => {
                                 <div class="boardListWriter">{question.writer}</div>
                             </div>
                         )}
-
                     </board>
                 </div>
             </div>

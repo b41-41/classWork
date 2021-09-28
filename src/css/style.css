@@ -4,6 +4,10 @@
 
 /* 기본 CSS 값 */
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   width: 100%;
 }
@@ -51,7 +55,7 @@ nav {
 article {
   background-color: #fdfcfa;
   padding-top: 60px;
-  border-radius: 15px;
+  border-radius: 0 15px 15px 0;
 }
 
 footer {
@@ -91,6 +95,10 @@ footer {
 /* 미디어 쿼리 */
 
 @media (max-width: 1024px) {
+  article {
+    border-radius: 0;
+  }
+
   .box {
     grid-template-columns: 220px 1fr;
     grid-auto-rows: auto, auto;
