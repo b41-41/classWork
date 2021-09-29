@@ -5,12 +5,14 @@ import { collection, getDocs } from "firebase/firestore";
 const Home = () => {
     const [studyContents, setStudyContents] = useState([]);
     const [noticeContents, setNoticeContents] = useState([]);
+    const [homeworkContents, setHomeworkContents] = useState([]);
 
     //최근 수업 정보 받아오기 
     const sendContents = async () => {
         try {
             const noticeRef = collection(dbService, "notice");
             const studyRef = collection(dbService, "study");
+            const homeworkRef = collection(dbService, "homework");
 
             const getNoticeContents = await getDocs(noticeRef);
             getNoticeContents.forEach((document) => {
@@ -18,9 +20,9 @@ const Home = () => {
                     ...document.data(),
                     id: document.id,
                 };
-                setNoticeContents((prev) => [noticeObject, ...prev])
-
+                setNoticeContents((prev) => [noticeObject, ...prev].sort(function (a, b) { return b.date - a.date }));
             });
+
             const getStudyContents = await getDocs(studyRef);
             getStudyContents.forEach((document) => {
                 const studyObject = {
@@ -29,6 +31,16 @@ const Home = () => {
                 };
                 setStudyContents((prev) => [studyObject, ...prev].sort(function (a, b) { return b.date - a.date }));
             });
+
+            const getHomeworkContents = await getDocs(homeworkRef);
+            getHomeworkContents.forEach((document) => {
+                const homeworkObject = {
+                    ...document.data(),
+                    id: document.id,
+                };
+                setHomeworkContents((prev) => [homeworkObject, ...prev].sort(function (a, b) { return b.date - a.date }));
+            });
+
         } catch (e) {
             console.error("Error onClick: ", e);
         }
@@ -86,14 +98,22 @@ const Home = () => {
                             )}
                         </ul>
                         <ul class="nnhForm__homework">
-                            <li class="nnhForm__homework--box">
-                                <span class="nnhForm__homework--box-title">말하기 숙제</span>
-                                <span class="nnhForm__homework--box-date">2021.09.21</span>
-                            </li>
-                            <li class="nnhForm__homework--box2">
-                                <span class="nnhForm__homework--box-title">말하기 숙제</span>
-                                <span class="nnhForm__homework--box-date">2021.09.21</span>
-                            </li>
+                            {homeworkContents.map((homework, i) =>
+                                i < 2 ?
+                                    (i + 1) % 2 !== 0 ?
+                                        <li class="nnhForm__homework--box">
+                                            <span class="nnhForm__homework--box-title">{homework.title}</span>
+                                            <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                        </li>
+                                        :
+                                        <li class="nnhForm__homework--box2">
+                                            <span class="nnhForm__homework--box-title">{homework.title}</span>
+                                            <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                        </li>
+                                    : ''
+                            )}
+
+
                         </ul>
                     </div>
                     <h2>CALENDER</h2>
