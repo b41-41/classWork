@@ -37,6 +37,7 @@ const AppRouter = ({ isLoggedIn }) => {
     useEffect(() => {
         if (isLoggedIn) {
             window.addEventListener('resize', handleMobileMenu);
+            document.querySelector('.ulMenu').addEventListener('click', handleMobileMenu);
             return () => {
                 window.removeEventListener('resize', handleMobileMenu);
             }

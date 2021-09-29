@@ -148,6 +148,7 @@ footer {
 
   article {
     border-left: 0px;
+    border-radius: 0 0 15px 15px;
   }
 
   footer {

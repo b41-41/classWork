@@ -34,31 +34,26 @@ const Layout = () => {
                 setNavCurrMenu(menu);
                 document.querySelector("#MYCLASSES").style.color = "#3f3e3e";
                 history.push("/");
-                document.querySelector(".navBar").style.display = "none";
                 break;
             case `HOMEWORK`:
                 setNavCurrMenu(menu);
                 document.querySelector("#HOMEWORK").style.color = "#3f3e3e";
                 history.push("/Homework");
-                document.querySelector(".navBar").style.display = "none";
                 break;
             case `STUDY`:
                 setNavCurrMenu(menu);
                 document.querySelector("#STUDY").style.color = "#3f3e3e";
                 history.push("/Study");
-                document.querySelector(".navBar").style.display = "none";
                 break;
             case `QUESTION`:
                 setNavCurrMenu(menu);
                 document.querySelector("#QUESTION").style.color = "#3f3e3e";
                 history.push("/Question");
-                document.querySelector(".navBar").style.display = "none";
                 break;
             case `NOTICE`:
                 setNavCurrMenu(menu);
                 document.querySelector("#NOTICE").style.color = "#3f3e3e";
                 history.push("/Notice");
-                document.querySelector(".navBar").style.display = "none";
                 break;
             default:
                 break;
