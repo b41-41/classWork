@@ -4,11 +4,23 @@ import { collection, getDocs } from "firebase/firestore";
 
 const Home = () => {
     const [studyContents, setStudyContents] = useState([]);
+    const [noticeContents, setNoticeContents] = useState([]);
 
     //최근 수업 정보 받아오기 
-    const sendStudyContents = async () => {
+    const sendContents = async () => {
         try {
+            const noticeRef = collection(dbService, "notice");
             const studyRef = collection(dbService, "study");
+
+            const getNoticeContents = await getDocs(noticeRef);
+            getNoticeContents.forEach((document) => {
+                const noticeObject = {
+                    ...document.data(),
+                    id: document.id,
+                };
+                setNoticeContents((prev) => [noticeObject, ...prev])
+
+            });
             const getStudyContents = await getDocs(studyRef);
             getStudyContents.forEach((document) => {
                 const studyObject = {
@@ -23,8 +35,17 @@ const Home = () => {
     };
 
     useEffect(() => {
-        sendStudyContents();
+        sendContents();
     }, []);
+
+    // 타임스템프 to date (yy.mm.dd)
+    const stampToDate_yymmdd = (timestamp) => {
+        if (timestamp) {
+            const date = timestamp.toDate();
+            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+        }
+        return;
+    };
 
     return (
         <>
@@ -52,27 +73,17 @@ const Home = () => {
                     <h2>NOTICE & HOMEWORK</h2>
                     <div class="nnhForm">
                         <ul class="nnhForm__notice">
-                            <li class="nnhForm__notice--content">
-                                <div class="nnhForm__notice--content-titlebox">
-                                    <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
-                                    <span class="nnhForm__notice--content-date">2021.09.21</span>
-                                </div>
-                                <span class="nnhForm__notice--content-text">지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.</span>
-                            </li>
-                            <li class="nnhForm__notice--content">
-                                <div class="nnhForm__notice--content-titlebox">
-                                    <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
-                                    <span class="nnhForm__notice--content-date">2021.09.21</span>
-                                </div>
-                                <span class="nnhForm__notice--content-text">지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.</span>
-                            </li>
-                            <li class="nnhForm__notice--content">
-                                <div class="nnhForm__notice--content-titlebox">
-                                    <span class="nnhForm__notice--content-title">다음주 월요일부터 수요일까지는 쉽니다.</span>
-                                    <span class="nnhForm__notice--content-date">2021.09.21</span>
-                                </div>
-                                <span class="nnhForm__notice--content-text">지난 주도 고생 많았습니다.다음주에는 추석이 있기 때문에 수업을 쉽니다.혹시 수업에 들어오지 않도록 주의 바랍니다.</span>
-                            </li>
+                            {noticeContents.map((notice, i) =>
+                                i < 3 ?
+                                    <li class="nnhForm__notice--content">
+                                        <div class="nnhForm__notice--content-titlebox">
+                                            <span class="nnhForm__notice--content-title">{notice.title}</span>
+                                            <span class="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
+                                        </div>
+                                        <span class="nnhForm__notice--content-text">{notice.content}</span>
+                                    </li>
+                                    : ''
+                            )}
                         </ul>
                         <ul class="nnhForm__homework">
                             <li class="nnhForm__homework--box">
