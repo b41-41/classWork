@@ -10,6 +10,7 @@ import Navigation from 'component/Navigation';
 
 
 const AppRouter = ({ isLoggedIn }) => {
+
     // 모바일 메뉴 열기, 닫기 스크립트
     const [navBar, setNavBar] = useState(false);
     const mobileMenuOpen = () => {

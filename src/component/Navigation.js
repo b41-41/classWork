@@ -6,7 +6,7 @@ const Layout = () => {
 
     // 로딩되면 첫 번째 메뉴
     const firstMenu = () => {
-        document.querySelector("#MYCLASSES").style.color = "#3f3e3e";
+        document.querySelector(`#${navCurrMenu}`).style.color = "#3f3e3e";
     };
     useEffect(firstMenu, []);
 
@@ -18,7 +18,7 @@ const Layout = () => {
     };
 
     // 메뉴 onClick 이벤트
-    const [navCurrMenu, setNavCurrMenu] = useState(`MY CLASSES`)
+    const [navCurrMenu, setNavCurrMenu] = useState(`MYCLASSES`)
 
     const moveRoute = (menu) => {
         const menuColorReset = () => {
@@ -30,30 +30,35 @@ const Layout = () => {
         }
         menuColorReset();
         switch (menu) {
-            case `MY CLASSES`:
+            case `MYCLASSES`:
                 setNavCurrMenu(menu);
                 document.querySelector("#MYCLASSES").style.color = "#3f3e3e";
                 history.push("/");
+                document.querySelector(".navBar").style.display = "none";
                 break;
             case `HOMEWORK`:
                 setNavCurrMenu(menu);
                 document.querySelector("#HOMEWORK").style.color = "#3f3e3e";
                 history.push("/Homework");
+                document.querySelector(".navBar").style.display = "none";
                 break;
             case `STUDY`:
                 setNavCurrMenu(menu);
                 document.querySelector("#STUDY").style.color = "#3f3e3e";
                 history.push("/Study");
+                document.querySelector(".navBar").style.display = "none";
                 break;
             case `QUESTION`:
                 setNavCurrMenu(menu);
                 document.querySelector("#QUESTION").style.color = "#3f3e3e";
                 history.push("/Question");
+                document.querySelector(".navBar").style.display = "none";
                 break;
             case `NOTICE`:
                 setNavCurrMenu(menu);
                 document.querySelector("#NOTICE").style.color = "#3f3e3e";
                 history.push("/Notice");
+                document.querySelector(".navBar").style.display = "none";
                 break;
             default:
                 break;
@@ -62,7 +67,7 @@ const Layout = () => {
     };
     return (
         <>
-            <div id="logoLink" onClick={() => { moveRoute('MY CLASSES') }}>
+            <div id="logoLink" onClick={() => { moveRoute('MYCLASSES') }}>
                 <span class="logo">
                     <span class="logoWork">Class</span>
                     Work
@@ -80,7 +85,7 @@ const Layout = () => {
                 <div class="menuForm">
                     <ul class="ulMenu">
                         <div class="menu" id="MYCLASSES">
-                            <li onClick={() => { moveRoute('MY CLASSES') }}>MY CLASSES</li>
+                            <li onClick={() => { moveRoute('MYCLASSES') }}>MY CLASSES</li>
                         </div>
                         <div class="menu" id="HOMEWORK">
                             <li onClick={() => { moveRoute('HOMEWORK') }}>HOMEWORK</li>

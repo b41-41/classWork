@@ -209,3 +209,9 @@ footer {
   text-align: center;
   font-size: 0.5rem;
 }
+
+/* Loading */
+
+.loading {
+  display: none;
+}
