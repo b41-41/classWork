@@ -22,7 +22,17 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : 'Initializing...'}
+      {init ? <AppRouter isLoggedIn={isLoggedIn} /> :
+        <>
+          <div class="loading">
+            <div class="logo">
+              <span class="logoWork">Class</span>
+              Work
+            </div>
+            <div class="loading__message">Loading...</div>
+          </div>
+        </>
+      }
     </>
   );
 }

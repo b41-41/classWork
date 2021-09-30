@@ -214,5 +214,21 @@ footer {
 /* Loading */
 
 .loading {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+.loading__message {
+  margin: 15px;
+  font-size: 3rem;
+  font-weight: bold;
 }
