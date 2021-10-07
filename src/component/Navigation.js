@@ -28,32 +28,49 @@ const Layout = () => {
             document.querySelector("#QUESTION").style.color = "#cac9cd";
             document.querySelector("#NOTICE").style.color = "#cac9cd";
         }
+
+        const currentMenuColorChange = () => {
+            document.querySelector(`#${menu}`).style.color = "#3f3e3e";
+        }
+
         menuColorReset();
+        currentMenuColorChange();
+
         switch (menu) {
             case `MYCLASSES`:
                 setNavCurrMenu(menu);
-                document.querySelector("#MYCLASSES").style.color = "#3f3e3e";
-                history.push("/");
+                history.push({
+                    pathname: "/",
+                    state: { navCurrMenu: navCurrMenu }
+                });
                 break;
             case `HOMEWORK`:
                 setNavCurrMenu(menu);
-                document.querySelector("#HOMEWORK").style.color = "#3f3e3e";
-                history.push("/Homework");
+                history.push({
+                    pathname: "/Homework",
+                    state: { navCurrMenu: navCurrMenu }
+                });
                 break;
             case `STUDY`:
                 setNavCurrMenu(menu);
-                document.querySelector("#STUDY").style.color = "#3f3e3e";
-                history.push("/Study");
+                history.push({
+                    pathname: "/Study",
+                    state: { navCurrMenu: navCurrMenu }
+                });
                 break;
             case `QUESTION`:
                 setNavCurrMenu(menu);
-                document.querySelector("#QUESTION").style.color = "#3f3e3e";
-                history.push("/Question");
+                history.push({
+                    pathname: "/Question",
+                    state: { navCurrMenu: navCurrMenu }
+                });
                 break;
             case `NOTICE`:
                 setNavCurrMenu(menu);
-                document.querySelector("#NOTICE").style.color = "#3f3e3e";
-                history.push("/Notice");
+                history.push({
+                    pathname: "/Notice",
+                    state: { navCurrMenu: navCurrMenu }
+                });
                 break;
             default:
                 break;
