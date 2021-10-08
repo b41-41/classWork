@@ -61,10 +61,10 @@ const AppRouter = ({ isLoggedIn }) => {
                                     <Navigation />
                                 </nav>
                                 < Route exact path="/" component={Home} />
-                                < Route exact path="/Homework" component={Homework} />
-                                < Route exact path="/Study" component={Study} />
-                                < Route exact path="/Question" component={Question} />
-                                < Route exact path="/Notice" component={Notice} />
+                                < Route path="/Homework" component={Homework} />
+                                < Route path="/Study" component={Study} />
+                                < Route path="/Question" component={Question} />
+                                < Route path="/Notice" component={Notice} />
                             </div>
                             <div class="copyright">
                                 <footer>&copy; Class Work {new Date().getFullYear()}</footer>
