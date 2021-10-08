@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { dbService } from 'fbase';
 import { collection, getDocs } from "firebase/firestore";
 
-const Home = () => {
+const Home = ({ match }) => {
     const [studyContents, setStudyContents] = useState([]);
     const [noticeContents, setNoticeContents] = useState([]);
     const [homeworkContents, setHomeworkContents] = useState([]);
@@ -101,15 +102,19 @@ const Home = () => {
                             {homeworkContents.map((homework, i) =>
                                 i < 2 ?
                                     (i + 1) % 2 !== 0 ?
-                                        <li class="nnhForm__homework--box">
-                                            <span class="nnhForm__homework--box-title">{homework.title}</span>
-                                            <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
-                                        </li>
+                                        <Link to={{ pathname: `/Homework/${homework.id}` }}>
+                                            <li class="nnhForm__homework--box">
+                                                <span class="nnhForm__homework--box-title">{homework.title}</span>
+                                                <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                            </li>
+                                        </Link>
                                         :
-                                        <li class="nnhForm__homework--box2">
-                                            <span class="nnhForm__homework--box-title">{homework.title}</span>
-                                            <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
-                                        </li>
+                                        <Link to={{ pathname: `/Homework/${homework.id}` }}>
+                                            <li class="nnhForm__homework--box2">
+                                                <span class="nnhForm__homework--box-title">{homework.title}</span>
+                                                <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                            </li>
+                                        </Link>
                                     : ''
                             )}
 

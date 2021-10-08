@@ -40,7 +40,8 @@ const HomeworkDetail = ({ match }) => {
         <>
             <div className="homeworkTitleDate">
                 <div className="homeworkContentTitle">
-                    {HWContents.type} {HWContents.title}
+                    <span className="homeworkContentTitle__type">{HWContents.type}</span>
+                    <span className="homeworkContentTitle__text">{HWContents.title}</span>
                 </div>
                 <div className="homeworkDate">
                     {stampToDate_yymmdd(HWContents.date)}
