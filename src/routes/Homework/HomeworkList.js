@@ -103,13 +103,10 @@ const HomeworkList = () => {
                         </div>
                         <div className="homeworkListForm_r">
                             <div className="homeworkListTag">
-                                waiting
-                            </div>
-                            <div className="homeworkListTitle">
                                 {homework.type}
                             </div>
                             <div className="homeworkListTitle">
-                                {homework.content}
+                                {homework.title}
                             </div>
                             <div className="homeworkListMTag">
                                 {chkDeadline(homework.deadline)}
@@ -125,13 +122,10 @@ const HomeworkList = () => {
                         </div>
                         <div className="homeworkListForm_r">
                             <div className="homeworkListTag">
-                                waiting
-                            </div>
-                            <div className="homeworkListTitle">
                                 {homework.type}
                             </div>
                             <div className="homeworkListTitle">
-                                {homework.content}
+                                {homework.title}
                             </div>
                             <div className="homeworkListMTag">
                                 {chkDeadline(homework.deadline)}

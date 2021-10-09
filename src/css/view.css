@@ -119,36 +119,44 @@
 }
 
 /* 숙제 내용 제목과 날짜 */
-.homeworkTitleDate {
-  display: grid;
-  grid-template-columns: 1fr 100px;
+.homeworkTitleBar {
   font-size: 12px;
+  margin-top: 60px;
 }
 
-.homeworkContentTitle {
+.homeworkTitleBar__title {
+  display: block;
   color: #0e0a07;
   font-family: "Roboto", sans-serif;
   font-size: 25px;
   font-weight: bold;
+  margin: 5px 0;
 }
 
-.homeworkContentTitle__type {
+.homeworkTitleBar__type {
   display: inline-block;
-  background-color: rgb(114, 114, 114);
-  border-radius: 10px;
+  background-color: #f28178;
+  border-radius: 5px;
   color: white;
-  padding: 6px;
-  font-size: 15px;
+  padding: 3px;
+  font-size: 10px;
 }
 
-.homeworkContentTitle__text {
+.homeworkTitleBar__dday {
   display: inline-block;
-  padding-left: 10px;
+  color: white;
+  margin: 2px 0;
+  background-color: #6e4846;
+  padding: 3px;
+  font-size: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
 }
 
-.homeworkDate {
-  margin-top: 12px;
+.homeworkTitleBar__deadline {
+  display: inline-block;
   color: #b7b9bd;
+  margin: 2px 0;
 }
 
 /* 숙제 메뉴 컨텐츠 */

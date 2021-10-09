@@ -36,16 +36,31 @@ const HomeworkDetail = ({ match }) => {
         return;
     };
 
+    //남은 마감 날짜 계산
+    const printDday = (deadline) => {
+        if (deadline === undefined) {
+            return;
+        }
+        const today = new Date();
+        const endDay = deadline.toDate();
+        const endDayDistance = (endDay - today);
+        const dday = Math.floor(endDayDistance / (1000 * 60 * 60 * 24));
+        if (endDay < today) {
+            return `마감`
+        } else {
+            return (`-${dday}일`)
+        }
+    }
+
     return (
         <>
-            <div className="homeworkTitleDate">
-                <div className="homeworkContentTitle">
-                    <span className="homeworkContentTitle__type">{HWContents.type}</span>
-                    <span className="homeworkContentTitle__text">{HWContents.title}</span>
-                </div>
-                <div className="homeworkDate">
-                    {stampToDate_yymmdd(HWContents.date)}
-                </div>
+            <div className="homeworkTitleBar">
+                <span className="homeworkTitleBar__type">{HWContents.type}</span>
+                <span className="homeworkTitleBar__title">{HWContents.title}</span>
+                <span className="homeworkTitleBar__dday">{printDday(HWContents.deadline)}</span>
+                <span className="homeworkTitleBar__deadline">
+                    ~{stampToDate_yymmdd(HWContents.deadline)}
+                </span>
             </div>
             <div className="homeworkContents">
                 {HWContents.content}
