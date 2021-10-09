@@ -13,6 +13,7 @@
   font-size: 3.5rem;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
+  margin: auto;
   margin-bottom: 5px;
 }
 
@@ -212,14 +213,15 @@
 /* 숙제 리스트 */
 .homeworkListForm {
   display: grid;
-  margin-top: 30px;
+  margin: 15px auto;
   padding: 10px;
   grid-template-columns: 150px 1fr;
   border-radius: 15px;
-  width: 95%;
+  width: 100%;
   background-color: #f5effe;
   transition: 400ms;
   align-items: center;
+  overflow: hidden;
 }
 .homeworkListForm:hover {
   cursor: pointer;
@@ -228,14 +230,15 @@
 
 .homeworkListForm2 {
   display: grid;
-  margin-top: 30px;
+  margin: 15px auto;
   padding: 10px;
   grid-template-columns: 150px 1fr;
   border-radius: 15px;
-  width: 95%;
+  width: 100%;
   background-color: #ffe88a;
   transition: 400ms;
   align-items: center;
+  overflow: hidden;
 }
 .homeworkListForm2:hover {
   cursor: pointer;
@@ -245,13 +248,19 @@
 /* 숙제 리스트 오른쪽 부분 */
 
 .homeworkListForm_r {
+  display: block;
   color: #10288f;
-  margin-left: 20px;
+  margin: 0 20px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .homeworkListForm_r2 {
+  display: block;
   color: #806600;
-  margin-left: 20px;
+  margin: 0 20px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .homeworkListDate {
@@ -280,7 +289,7 @@
   display: block;
   margin: 15px 3px;
   font-weight: bold;
-  width: 75%;
+  width: 90%;
   font-size: 24px;
   overflow: hidden;
   text-overflow: ellipsis;

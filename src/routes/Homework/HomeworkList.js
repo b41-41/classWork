@@ -21,27 +21,6 @@ const HomeworkList = () => {
         });
     };
 
-    // //숙제 클릭하면 내용 페이지로 전달 (onClick Event)
-    // const sendHWContents = async (key) => {
-    //     try {
-    //         const HWref = doc(dbService, "homework", `${key}`);
-    //         const getHWContents = await getDoc(HWref);
-    //         console.log(getHWContents.data());  // 클릭한 부분의 값을 잘 가져오고 있음.
-    //         const HWContentsData = getHWContents.data();
-    //         // setHWContents(getHWContents.data());
-    //         history.location.pathname === "/Homework" ?
-    //             history.push({
-    //                 pathname: `Homework/${key}`,
-    //             })
-    //             :
-    //             history.push({
-    //                 pathname: `${key}`,
-    //             })
-    //     } catch (e) {
-    //         console.error("Error onClick: ", e);
-    //     }
-    // };
-
     //db값 얻어오기 useEffect
     useEffect(() => {
         getSubmits();

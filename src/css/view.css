@@ -121,7 +121,7 @@
 /* 숙제 내용 제목과 날짜 */
 .homeworkTitleBar {
   font-size: 12px;
-  margin-top: 60px;
+  margin: 15px 0;
 }
 
 .homeworkTitleBar__title {
