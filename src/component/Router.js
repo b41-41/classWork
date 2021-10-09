@@ -52,22 +52,24 @@ const AppRouter = ({ isLoggedIn }) => {
                 {
                     isLoggedIn
                         ? <>
-                            < div class="menuBTN" onClick={mobileMenuOpen}>
-                                <span class="icon">
+                            < div className="menuBTN" onClick={mobileMenuOpen}>
+                                <span className="icon">
                                     <img width="20px" src={listPNG} alt="notification" />
                                 </span>
                             </div>
-                            <div class="box">
+                            <div className="box">
                                 <nav>
                                     <Navigation />
                                 </nav>
-                                < Route exact path="/" component={Home} />
-                                <Route Route path="/Homework" component={Homework} />
-                                < Route path="/Study" component={Study} />
-                                < Route path="/Question" component={Question} />
-                                < Route path="/Notice" component={Notice} />
+                                <div className="main">
+                                    < Route exact path="/" component={Home} />
+                                    < Route Route path="/Homework" component={Homework} />
+                                    < Route path="/Study" component={Study} />
+                                    < Route path="/Question" component={Question} />
+                                    < Route path="/Notice" component={Notice} />
+                                </div>
                             </div>
-                            <div class="copyright">
+                            <div className="copyright">
                                 <footer>&copy; Class Work {new Date().getFullYear()}</footer>
                             </div>
                         </>

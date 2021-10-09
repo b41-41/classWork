@@ -65,7 +65,7 @@
   padding: 10px;
   text-align: center;
   box-shadow: 1px 1px 4px #eeedeb;
-  width: 90%;
+  width: 100%;
 }
 
 .lastClass.icon {
@@ -90,7 +90,7 @@
   padding: 15px;
   text-align: center;
   box-shadow: 1px 1px 4px #eeedeb;
-  width: 90%;
+  width: 100%;
 }
 
 .nextClass:hover {

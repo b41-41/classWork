@@ -55,6 +55,11 @@ nav {
   display: none;
 }
 
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .list {
   border-left: 1px solid #fcfbf7;
   padding-top: 60px;
@@ -83,7 +88,7 @@ footer {
 
 .box {
   display: grid;
-  grid-template-columns: 220px 1fr 1fr;
+  grid-template-columns: 220px 1fr;
   background-color: #ffffff;
   margin-left: 1%;
   margin-top: 25px;
@@ -105,16 +110,19 @@ footer {
 @media (max-width: 1024px) {
   article {
     border-radius: 0;
+    padding: 20px 0;
+  }
+
+  .main {
+    display: block;
+  }
+
+  .list {
+    height: auto;
   }
 
   .box {
     grid-template-columns: 220px 1fr;
-    grid-auto-rows: auto, auto;
-  }
-
-  .box article {
-    grid-column: 2;
-    grid-row: 2;
   }
 
   /* 노티바 부분 숨기기 */
