@@ -6,7 +6,7 @@ import HomeworkSubmit from 'routes/Homework/HomeworkSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
 
 
-const Homework = ({ match, userObj }) => {
+const Homework = ({ match }) => {
 
     // 본 내용
     return (

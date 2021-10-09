@@ -164,12 +164,12 @@
 /* 숙제 메뉴 컨텐츠 */
 .homeworkContents {
   display: block;
-  width: 90%;
+  width: 100%;
   padding: 30px;
-  margin: 30px;
   border-radius: 15px;
   background-color: white;
   box-shadow: 1px 1px 4px #eeedeb;
+  margin: 15px 0;
 }
 
 /* 숙제 제출 버튼 */
@@ -178,9 +178,9 @@
   grid-template-columns: 80px 1fr;
   background-color: white;
   border-radius: 15px;
-  width: 90%;
-  margin: 30px;
+  width: 100%;
   box-shadow: 1px 1px 4px #eeedeb;
+  margin: 15px 0;
 }
 
 .homeworkSubmit:hover {
@@ -203,7 +203,7 @@
 
 /* 숙제 제출 폼 */
 .HomeworkSubmitTextArea {
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -229,6 +229,7 @@
   margin: 20px 0;
   transition: 400ms;
   font-weight: bolder;
+  color: black;
 }
 
 .HomeworkSubmitTextArea__button:hover {
