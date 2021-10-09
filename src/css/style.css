@@ -47,6 +47,10 @@ nav {
   padding-top: 60px;
 }
 
+.hide {
+  display: none;
+}
+
 .list {
   border-left: 1px solid #fcfbf7;
   padding-top: 60px;

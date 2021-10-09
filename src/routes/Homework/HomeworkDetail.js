@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, doc, getDoc } from "firebase/firestore"
 
 const HomeworkDetail = ({ match }) => {
 
-    //useState
     const [HWContents, setHWContents] = useState({});
 
     //DB Load
@@ -55,8 +55,8 @@ const HomeworkDetail = ({ match }) => {
     return (
         <>
             <div className="homeworkTitleBar">
-                <span className="homeworkTitleBar__type">{HWContents.type}</span>
-                <span className="homeworkTitleBar__title">{HWContents.title}</span>
+                <span className="homeworkTitleBar__type">{HWContents.type}</span><br />
+                <div className="homeworkTitleBar__title">{HWContents.title}</div><br />
                 <span className="homeworkTitleBar__dday">{printDday(HWContents.deadline)}</span>
                 <span className="homeworkTitleBar__deadline">
                     ~{stampToDate_yymmdd(HWContents.deadline)}
@@ -65,14 +65,19 @@ const HomeworkDetail = ({ match }) => {
             <div className="homeworkContents">
                 {HWContents.content}
             </div>
-            <div className="homeworkSubmit">
-                <div className="homeworkSubmitL">
-                    <img width="50px" src="../img/send.png" alt="send" />
+            <Link to={{
+                pathname: `/Homework/${key}/submit`,
+                state: { key }
+            }}>
+                <div className="homeworkSubmit">
+                    <div className="homeworkSubmitL">
+                        <img width="50px" src="../img/send.png" alt="send" />
+                    </div>
+                    <div className="homeworkSubmitR">
+                        숙제 제출
+                    </div>
                 </div>
-                <div className="homeworkSubmitR">
-                    숙제 제출
-                </div>
-            </div>
+            </Link>
         </>
     )
 }

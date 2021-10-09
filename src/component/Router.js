@@ -61,7 +61,7 @@ const AppRouter = ({ isLoggedIn }) => {
                                     <Navigation />
                                 </nav>
                                 < Route exact path="/" component={Home} />
-                                < Route path="/Homework" component={Homework} />
+                                <Route Route path="/Homework" component={Homework} />
                                 < Route path="/Study" component={Study} />
                                 < Route path="/Question" component={Question} />
                                 < Route path="/Notice" component={Notice} />

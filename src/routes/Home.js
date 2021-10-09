@@ -62,57 +62,57 @@ const Home = ({ match }) => {
 
     return (
         <>
-            <div class="list">
-                <div class="listForm">
-                    <div class="currMenu">
+            <div className="list">
+                <div className="listForm">
+                    <div className="currMenu">
                         MY CLASSES
                     </div>
-                    <div class="listClassName">
+                    <div className="listClassName">
                         한국어센터 1급 2반
                     </div>
-                    <div class="teacherForm">
-                        <div class="teacherPhoto">
-                            <img class="teacherJPG" width="auto" width="150px" src="./img/teacher.png" alt="teacher" />
+                    <div className="teacherForm">
+                        <div className="teacherPhoto">
+                            <img className="teacherJPG" width="auto" width="150px" src="./img/teacher.png" alt="teacher" />
                         </div>
-                        <div class="teacherInfo">
-                            <span class="teacherTag">NAME</span><br />
-                            <span class="teacherContent">정다빈</span><br />
-                            <span class="teacherTag">E-MAIL</span><br />
-                            <span class="teacherContent">malgolil41@gmail.com</span><br />
-                            <span class="teacherTag2">
+                        <div className="teacherInfo">
+                            <span className="teacherTag">NAME</span><br />
+                            <span className="teacherContent">정다빈</span><br />
+                            <span className="teacherTag">E-MAIL</span><br />
+                            <span className="teacherContent">malgolil41@gmail.com</span><br />
+                            <span className="teacherTag2">
                                 ✉️ Send Message
                             </span>
                         </div></div>
                     <h2>NOTICE & HOMEWORK</h2>
-                    <div class="nnhForm">
-                        <ul class="nnhForm__notice">
+                    <div className="nnhForm">
+                        <ul className="nnhForm__notice">
                             {noticeContents.map((notice, i) =>
                                 i < 3 ?
-                                    <li class="nnhForm__notice--content">
-                                        <div class="nnhForm__notice--content-titlebox">
-                                            <span class="nnhForm__notice--content-title">{notice.title}</span>
-                                            <span class="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
+                                    <li className="nnhForm__notice--content">
+                                        <div className="nnhForm__notice--content-titlebox">
+                                            <span className="nnhForm__notice--content-title">{notice.title}</span>
+                                            <span className="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
                                         </div>
-                                        <span class="nnhForm__notice--content-text">{notice.content}</span>
+                                        <span className="nnhForm__notice--content-text">{notice.content}</span>
                                     </li>
                                     : ''
                             )}
                         </ul>
-                        <ul class="nnhForm__homework">
+                        <ul className="nnhForm__homework">
                             {homeworkContents.map((homework, i) =>
                                 i < 2 ?
                                     (i + 1) % 2 !== 0 ?
                                         <Link to={{ pathname: `/Homework/${homework.id}` }}>
-                                            <li class="nnhForm__homework--box">
-                                                <span class="nnhForm__homework--box-title">{homework.title}</span>
-                                                <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                            <li className="nnhForm__homework--box">
+                                                <span className="nnhForm__homework--box-title">{homework.title}</span>
+                                                <span className="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
                                             </li>
                                         </Link>
                                         :
                                         <Link to={{ pathname: `/Homework/${homework.id}` }}>
-                                            <li class="nnhForm__homework--box2">
-                                                <span class="nnhForm__homework--box-title">{homework.title}</span>
-                                                <span class="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                            <li className="nnhForm__homework--box2">
+                                                <span className="nnhForm__homework--box-title">{homework.title}</span>
+                                                <span className="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
                                             </li>
                                         </Link>
                                     : ''
@@ -122,45 +122,45 @@ const Home = ({ match }) => {
                         </ul>
                     </div>
                     <h2>CALENDER</h2>
-                    <div class="calender">
+                    <div className="calender">
                         달력
                     </div>
                 </div>
             </div>
             <article>
-                <div class="articleForm">
-                    <div class="noti_search">
-                        <div class="noti_search_n">
-                            <span class="icon2">
+                <div className="articleForm">
+                    <div className="noti_search">
+                        <div className="noti_search_n">
+                            <span className="icon2">
                                 <img width="20px" src='./img/notification.png' alt="notification" />
                             </span>
                         </div>
-                        <div class="noti_search_s">
-                            <span class="icon2">
+                        <div className="noti_search_s">
+                            <span className="icon2">
                                 <img width="20px" src='./img/search.png' alt="search" />
                             </span>
-                            <span class="search">
+                            <span className="search">
                                 <input placeholder="Search for anything" />
                             </span>
                         </div>
                     </div>
                     <h2>LAST CLASS</h2>
-                    <div class="lastClass">
-                        <div class="lastClass_icon">
+                    <div className="lastClass">
+                        <div className="lastClass_icon">
                             <img height="100px" src='./img/class.png' alt="next class" />
                         </div>
-                        <div class="lastClass_content">
-                            <span class="class_title">지난 수업</span>
-                            <div class="class_contents">{studyContents.map((data, i) => i === 0 ? data.title : '')}</div>
+                        <div className="lastClass_content">
+                            <span className="class_title">지난 수업</span>
+                            <div className="class_contents">{studyContents.map((data, i) => i === 0 ? data.title : '')}</div>
                         </div>
                     </div>
                     <h2>NEXT CLASS</h2>
-                    <div class="nextClass">
-                        <div class="nextClass_content">
-                            <span class="class_title">다음 수업</span>
-                            <span class="class_contents">{studyContents.map((data, i) => i === 0 ? data.next : '')}</span>
+                    <div className="nextClass">
+                        <div className="nextClass_content">
+                            <span className="class_title">다음 수업</span>
+                            <span className="class_contents">{studyContents.map((data, i) => i === 0 ? data.next : '')}</span>
                         </div>
-                        <div class="nextClass_icon">
+                        <div className="nextClass_icon">
                             <img height="100px" src='./img/nextclass.png' alt="next class" />
                         </div>
                     </div>

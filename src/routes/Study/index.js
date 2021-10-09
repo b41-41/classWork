@@ -79,13 +79,10 @@ const Study = () => {
                                 </div>
                                 <div class="homeworkListForm_r">
                                     <div class="homeworkListTag">
-                                        {study.chapter}
+                                        {study.chapter} {study.type}
                                     </div>
                                     <div class="homeworkListTitle">
-                                        {study.type}
-                                    </div>
-                                    <div class="homeworkListTitle">
-                                        {study.type}
+                                        {study.title}
                                     </div>
                                     <div class="homeworkListMTag">
                                         📚 {study.page}
@@ -101,13 +98,10 @@ const Study = () => {
                                 </div>
                                 <div class="homeworkListForm_r">
                                     <div class="homeworkListTag">
-                                        {study.chapter}
+                                        {study.chapter} {study.type}
                                     </div>
                                     <div class="homeworkListTitle">
-                                        {study.type}
-                                    </div>
-                                    <div class="homeworkListTitle">
-                                        {study.type}
+                                        {study.title}
                                     </div>
                                     <div class="homeworkListMTag">
                                         📚 {study.page}

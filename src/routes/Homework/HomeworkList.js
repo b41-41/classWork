@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, addDoc, doc, getDocs, getDoc, orderBy, serverTimestamp } from "firebase/firestore"
 
@@ -20,42 +21,26 @@ const HomeworkList = () => {
         });
     };
 
-    //숙제 클릭하면 내용 페이지로 전달 (onClick Event)
-    const sendHWContents = async (key) => {
-        try {
-            const HWref = doc(dbService, "homework", `${key}`);
-            const getHWContents = await getDoc(HWref);
-            console.log(getHWContents.data());  // 클릭한 부분의 값을 잘 가져오고 있음.
-            const HWContentsData = getHWContents.data();
-            // setHWContents(getHWContents.data());
-            history.location.pathname === "/Homework" ?
-                history.push({
-                    pathname: `Homework/${key}`,
-                    // state: {
-                    //     type: HWContentsData.type,
-                    //     deadline: HWContentsData.deadline,
-                    //     date: HWContentsData.date,
-                    //     content: HWContentsData.content,
-                    //     title: HWContentsData.title,
-                    //     key
-                    // }
-                })
-                :
-                history.push({
-                    pathname: `${key}`,
-                    // state: {
-                    //     type: HWContentsData.type,
-                    //     deadline: HWContentsData.deadline,
-                    //     date: HWContentsData.date,
-                    //     content: HWContentsData.content,
-                    //     title: HWContentsData.title,
-                    //     key
-                    // }
-                })
-        } catch (e) {
-            console.error("Error onClick: ", e);
-        }
-    };
+    // //숙제 클릭하면 내용 페이지로 전달 (onClick Event)
+    // const sendHWContents = async (key) => {
+    //     try {
+    //         const HWref = doc(dbService, "homework", `${key}`);
+    //         const getHWContents = await getDoc(HWref);
+    //         console.log(getHWContents.data());  // 클릭한 부분의 값을 잘 가져오고 있음.
+    //         const HWContentsData = getHWContents.data();
+    //         // setHWContents(getHWContents.data());
+    //         history.location.pathname === "/Homework" ?
+    //             history.push({
+    //                 pathname: `Homework/${key}`,
+    //             })
+    //             :
+    //             history.push({
+    //                 pathname: `${key}`,
+    //             })
+    //     } catch (e) {
+    //         console.error("Error onClick: ", e);
+    //     }
+    // };
 
     //db값 얻어오기 useEffect
     useEffect(() => {
@@ -95,43 +80,47 @@ const HomeworkList = () => {
             {/* 숙제 리스트 */}
             {submits.map((homework, i) =>
                 i % 2 === 0 ?
-                    <div className="homeworkListForm" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
-                        <div className="homeworkListForm_l">
-                            <div className="homeworkListDate">
-                                ~{stampToDate(homework.deadline)}
+                    <Link to={`/Homework/${homework.id}`} >
+                        <div className="homeworkListForm" key={homework.id}>
+                            <div className="homeworkListForm_l">
+                                <div className="homeworkListDate">
+                                    ~{stampToDate(homework.deadline)}
+                                </div>
+                            </div>
+                            <div className="homeworkListForm_r">
+                                <div className="homeworkListTag">
+                                    {homework.type}
+                                </div>
+                                <div className="homeworkListTitle">
+                                    {homework.title}
+                                </div>
+                                <div className="homeworkListMTag">
+                                    {chkDeadline(homework.deadline)}
+                                </div>
                             </div>
                         </div>
-                        <div className="homeworkListForm_r">
-                            <div className="homeworkListTag">
-                                {homework.type}
-                            </div>
-                            <div className="homeworkListTitle">
-                                {homework.title}
-                            </div>
-                            <div className="homeworkListMTag">
-                                {chkDeadline(homework.deadline)}
-                            </div>
-                        </div>
-                    </div>
+                    </Link>
                     :
-                    <div className="homeworkListForm2" key={homework.id} onClick={() => { sendHWContents(homework.id) }}>
-                        <div className="homeworkListForm_l">
-                            <div className="homeworkListDate">
-                                ~{stampToDate(homework.deadline)}
+                    <Link to={`/Homework/${homework.id}`} >
+                        <div className="homeworkListForm2" key={homework.id}>
+                            <div className="homeworkListForm_l">
+                                <div className="homeworkListDate">
+                                    ~{stampToDate(homework.deadline)}
+                                </div>
+                            </div>
+                            <div className="homeworkListForm_r">
+                                <div className="homeworkListTag">
+                                    {homework.type}
+                                </div>
+                                <div className="homeworkListTitle">
+                                    {homework.title}
+                                </div>
+                                <div className="homeworkListMTag">
+                                    {chkDeadline(homework.deadline)}
+                                </div>
                             </div>
                         </div>
-                        <div className="homeworkListForm_r">
-                            <div className="homeworkListTag">
-                                {homework.type}
-                            </div>
-                            <div className="homeworkListTitle">
-                                {homework.title}
-                            </div>
-                            <div className="homeworkListMTag">
-                                {chkDeadline(homework.deadline)}
-                            </div>
-                        </div>
-                    </div>
+                    </Link>
             )}
         </>
     )
