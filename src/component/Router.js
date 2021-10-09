@@ -7,6 +7,7 @@ import Study from 'routes/Study';
 import Question from 'routes/Question'
 import Notice from 'routes/Notice';
 import Navigation from 'component/Navigation';
+import listPNG from '../img/list.png';
 
 
 const AppRouter = ({ isLoggedIn }) => {
@@ -53,7 +54,7 @@ const AppRouter = ({ isLoggedIn }) => {
                         ? <>
                             < div class="menuBTN" onClick={mobileMenuOpen}>
                                 <span class="icon">
-                                    <img width="20px" src='./img/list.png' alt="notification" />
+                                    <img width="20px" src={listPNG} alt="notification" />
                                 </span>
                             </div>
                             <div class="box">
