@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.calandar {
+  height: 460px;
+}
+
+.today {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.week {
+  display: flex;
+  justify-content: space-around;
+}
+
+.date {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.date div {
+  width: calc(100% / 7);
+}

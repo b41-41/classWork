@@ -7,7 +7,9 @@ import Study from 'routes/Study';
 import Question from 'routes/Question'
 import Notice from 'routes/Notice';
 import Navigation from 'component/Navigation';
+import Admin from 'component/Admin';
 import listPNG from '../img/list.png';
+import Calandar from './Calandar';
 
 
 const AppRouter = ({ isLoggedIn }) => {
@@ -63,10 +65,11 @@ const AppRouter = ({ isLoggedIn }) => {
                                 </nav>
                                 <div className="main">
                                     < Route exact path="/" component={Home} />
-                                    < Route Route path="/Homework" component={Homework} />
+                                    < Route path="/Homework" component={Homework} />
                                     < Route path="/Study" component={Study} />
                                     < Route path="/Question" component={Question} />
                                     < Route path="/Notice" component={Notice} />
+                                    < Route path="/Admin" componenet={Admin} />
                                 </div>
                             </div>
                             <div className="copyright">

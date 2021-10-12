@@ -80,35 +80,35 @@ const Layout = () => {
     return (
         <>
             <div id="logoLink" onClick={() => { moveRoute('MYCLASSES') }}>
-                <span class="logo">
-                    <span class="logoWork">Class</span>
+                <span className="logo">
+                    <span className="logoWork">Class</span>
                     Work
                 </span>
-                <div class="className">
+                <div className="className">
                     한국어센터 1급 2반
                 </div>
             </div>
-            <div class="navBar">
-                <div class="userInfo">
-                    <span class="userInfo_name">{authService.currentUser.displayName} 님</span><br />
-                    <span class="userInfo_info">{authService.currentUser.email}</span>
+            <div className="navBar">
+                <div className="userInfo">
+                    <span className="userInfo_name">{authService.currentUser.displayName} 님</span><br />
+                    <span className="userInfo_info">{authService.currentUser.email}</span>
                 </div>
-                <div class="signOut" onClick={onLogOutClick}>SIGN OUT</div>
-                <div class="menuForm">
-                    <ul class="ulMenu">
-                        <div class="menu" id="MYCLASSES">
+                <div className="signOut" onClick={onLogOutClick}>SIGN OUT</div>
+                <div className="menuForm">
+                    <ul className="ulMenu">
+                        <div className="menu" id="MYCLASSES">
                             <li onClick={() => { moveRoute('MYCLASSES') }}>MY CLASSES</li>
                         </div>
-                        <div class="menu" id="HOMEWORK">
+                        <div className="menu" id="HOMEWORK">
                             <li onClick={() => { moveRoute('HOMEWORK') }}>HOMEWORK</li>
                         </div>
-                        <div class="menu" id="STUDY">
+                        <div className="menu" id="STUDY">
                             <li onClick={() => { moveRoute('STUDY') }}>STUDY</li>
                         </div>
-                        <div class="menu" id="QUESTION">
+                        <div className="menu" id="QUESTION">
                             <li onClick={() => { moveRoute('QUESTION') }}>QUESTION</li>
                         </div>
-                        <div class="menu" id="NOTICE">
+                        <div className="menu" id="NOTICE">
                             <li onClick={() => { moveRoute('NOTICE') }}>NOTICE</li>
                         </div>
                     </ul>
