@@ -5,11 +5,11 @@ import '../css/calandar.css';
 const Calandar = () => {
     return (
         <>
-            <div className="Calandar">
+            <div className="calandar">
                 <div className="today">
                     <div>{'<'}</div>
                     <div>
-                        <h1>유월</h1>
+                        <h1>십일월</h1>
                         <p>2021년 10월 23일 금요일</p>
                     </div>
                     <div>{'>'}</div>

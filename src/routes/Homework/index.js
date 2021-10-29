@@ -46,7 +46,7 @@ const Homework = ({ match }) => {
                 :
                 <>
                     {/* 모바일, 테블릿 버전 */}
-                    {/* 중앙 레이아웃 */}
+                    {/* 상단 레이아웃 */}
                     <div className="list">
                         <div className="listForm">
                             <Link to="/Homework">
@@ -59,7 +59,7 @@ const Homework = ({ match }) => {
                         </div>
                     </div>
 
-                    {/* 우측 레이아웃 */}
+                    {/* 하단 레이아웃 */}
                     <article>
                         <div className="articleForm">
                             <Route

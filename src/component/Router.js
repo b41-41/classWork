@@ -9,7 +9,6 @@ import Notice from 'routes/Notice';
 import Navigation from 'component/Navigation';
 import Admin from 'component/Admin';
 import listPNG from '../img/list.png';
-import Calandar from './Calandar';
 
 
 const AppRouter = ({ isLoggedIn }) => {

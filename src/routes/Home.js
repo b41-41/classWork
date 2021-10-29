@@ -146,15 +146,19 @@ const Home = ({ match }) => {
                         </div>
                     </div>
                     <h2>LAST CLASS</h2>
-                    <div className="lastClass">
-                        <div className="lastClass_icon">
-                            <img height="100px" src='./img/class.png' alt="next class" />
-                        </div>
-                        <div className="lastClass_content">
-                            <span className="class_title">지난 수업</span>
-                            <div className="class_contents">{studyContents.map((data, i) => i === 0 ? data.title : '')}</div>
-                        </div>
-                    </div>
+                    {studyContents.map((data, i) => i === 0 ?
+                        <Link to={{ pathname: `/Study/${data.id}` }}>
+                            <div className="lastClass">
+                                <div className="lastClass_icon">
+                                    <img height="100px" src='./img/class.png' alt="next class" />
+                                </div>
+                                <div className="lastClass_content">
+                                    <span className="class_title">지난 수업</span>
+                                    <div className="class_contents">{data.title}</div>
+                                </div>
+                            </div>
+                        </Link>
+                        : '')}
                     <h2>NEXT CLASS</h2>
                     <div className="nextClass">
                         <div className="nextClass_content">

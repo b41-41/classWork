@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from 'fbase';
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+import { Route, Link } from "react-router-dom";
+import StudyList from './StudyList';
+import NotiSearchBar from 'component/NotiSearchBar';
+import StudyDetail from './StudyDetail';
 
-const Study = () => {
+const Study = ({ match }) => {
     //useState
     const [submits, setSubmits] = useState([]);
     const [studyContents, setStudyContents] = useState({
@@ -64,88 +68,52 @@ const Study = () => {
 
     return (
         <>
-            <div class="list">
-                <div class="listForm">
-                    <div class="currMenu">
-                        STUDY
+            {(window.innerWidth > 1024) ?
+                <>
+                    <div class="list">
+                        <div class="listForm">
+                            <Link to="/Study">
+                                <div class="currMenu">
+                                    STUDY
+                                </div>
+                            </Link>
+                            <StudyList />
+                        </div>
                     </div>
-                    {submits.map((study, i) =>
-                        i % 2 === 0 ?
-                            <div class="homeworkListForm" onClick={() => { sendStudyContents(study.id) }}>
-                                <div class="homeworkListForm_l">
-                                    <div class="homeworkListDate">
-                                        {stampToDate(study.date)}
-                                    </div>
+                    <article>
+                        <div className="articleForm">
+                            <NotiSearchBar />
+                            <Route exact path={`${match.path}`}><p>메뉴를 선택하세요.</p></Route>
+                            <Route
+                                path={`${match.path}/:id`}
+                                render={({ match }) => <StudyDetail {...{ match }} />}
+                            />
+                        </div>
+                    </article>
+                </>
+                :
+                <>
+                    <div class="list">
+                        <div class="listForm">
+                            <Link to="/Study">
+                                <div class="currMenu">
+                                    STUDY
                                 </div>
-                                <div class="homeworkListForm_r">
-                                    <div class="homeworkListTag">
-                                        {study.chapter} {study.type}
-                                    </div>
-                                    <div class="homeworkListTitle">
-                                        {study.title}
-                                    </div>
-                                    <div class="homeworkListMTag">
-                                        📚 {study.page}
-                                    </div>
-                                </div>
-                            </div>
-                            :
-                            <div class="homeworkListForm2" onClick={() => { sendStudyContents(study.id) }}>
-                                <div class="homeworkListForm_l">
-                                    <div class="homeworkListDate">
-                                        {stampToDate(study.date)}
-                                    </div>
-                                </div>
-                                <div class="homeworkListForm_r">
-                                    <div class="homeworkListTag">
-                                        {study.chapter} {study.type}
-                                    </div>
-                                    <div class="homeworkListTitle">
-                                        {study.title}
-                                    </div>
-                                    <div class="homeworkListMTag">
-                                        📚 {study.page}
-                                    </div>
-                                </div>
-                            </div>
-                    )}
+                            </Link>
+                            <Route exact path={`${match.path}`} component={StudyList} />
+                        </div>
+                    </div>
+                    <article>
+                        <div className="articleForm">
+                            <Route
+                                path={`${match.path}/:id`}
+                                render={({ match }) => <StudyDetail {...{ match }} />}
+                            />
+                        </div>
+                    </article>
+                </>
+            }
 
-                </div>
-            </div>
-            <article>
-                <div class="articleForm">
-                    <div class="noti_search">
-                        <div class="noti_search_n">
-                            <span class="icon2">
-                                <img width="20px" src='./img/notification.png' alt="notification" />
-                            </span>
-                        </div>
-                        <div class="noti_search_s">
-                            <span class="icon2">
-                                <img width="20px" src='./img/search.png' alt="search" />
-                            </span>
-                            <span class="search">
-                                <input placeholder="Search for anything" />
-                            </span>
-                        </div>
-                    </div>
-                    <div class="homeworkTitleDate">
-                        <div class="homeworkContentTitle">
-                            {studyContents.title}
-                        </div>
-                        <div class="homeworkDate">
-                            {stampToDate_yymmdd(studyContents.date)}
-                        </div>
-                    </div>
-                    <div class="homeworkContents">
-                        {studyContents.content}
-                        <div class="homeworkListMTag">
-                            📚 {studyContents.page}
-                        </div>
-                    </div>
-
-                </div>
-            </article>
         </>
     );
 
