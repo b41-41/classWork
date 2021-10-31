@@ -89,13 +89,15 @@ const Home = ({ match }) => {
                         <ul className="nnhForm__notice">
                             {noticeContents.map((notice, i) =>
                                 i < 3 ?
-                                    <li className="nnhForm__notice--content">
-                                        <div className="nnhForm__notice--content-titlebox">
-                                            <span className="nnhForm__notice--content-title">{notice.title}</span>
-                                            <span className="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
-                                        </div>
-                                        <span className="nnhForm__notice--content-text">{notice.content}</span>
-                                    </li>
+                                    <Link to={{ pathname: `/Notice/${notice.id}` }}>
+                                        <li className="nnhForm__notice--content">
+                                            <div className="nnhForm__notice--content-titlebox">
+                                                <span className="nnhForm__notice--content-title">{notice.title}</span>
+                                                <span className="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
+                                            </div>
+                                            <span className="nnhForm__notice--content-text">{notice.content}</span>
+                                        </li>
+                                    </Link>
                                     : ''
                             )}
                         </ul>
