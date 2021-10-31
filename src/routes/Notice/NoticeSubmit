@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { dbService, authService } from 'fbase';
 import { collection, addDoc } from "firebase/firestore";
 
-const HomeworkSubmit = ({ match, userObj }) => {
+const NoticeSubmit = ({ match, userObj }) => {
     const [submit, setSubmit] = useState("");
 
-    const HomeworkID = match.params.id;
+    const NoticeID = match.params.id;
     const UID = authService.currentUser.uid;
 
     const onSubmit = async (event) => {
@@ -16,7 +16,7 @@ const HomeworkSubmit = ({ match, userObj }) => {
                 data: Date.now(),
                 uid: UID
             }
-            const loadCollection = collection(dbService, "homework", HomeworkID, "comment");
+            const loadCollection = collection(dbService, "notice", NoticeID, "submit");
 
             //숙제 내용 DB에 작성
             const docRef = await addDoc(loadCollection, data);
@@ -41,7 +41,7 @@ const HomeworkSubmit = ({ match, userObj }) => {
                     value={submit}
                     onChange={onChange}
                     type="text"
-                    placeholder="숙제 내용을 입력해 주세요."
+                    placeholder="내용을 입력하세요."
                     autoFocus
                 />
                 <input className="HomeworkSubmitTextArea__button" type="submit" value="제출" />
@@ -50,4 +50,4 @@ const HomeworkSubmit = ({ match, userObj }) => {
     )
 }
 
-export default HomeworkSubmit;
+export default NoticeSubmit;
