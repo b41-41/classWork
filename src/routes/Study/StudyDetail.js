@@ -9,7 +9,7 @@ const StudyDetail = ({ match }) => {
     const key = match.params.id;
 
     //본문 내용 읽어오기 (onClick Event)
-    const sendHWContents = async () => {
+    const sendStudyContents = async () => {
         try {
             const HWref = doc(dbService, "study", `${key}`);
             const getStudyContents = await getDoc(HWref);
@@ -20,7 +20,7 @@ const StudyDetail = ({ match }) => {
     };
 
     useEffect(() => {
-        sendHWContents();
+        sendStudyContents();
     }, [key])
 
     // 타임스템프 to date (yy.mm.dd)
