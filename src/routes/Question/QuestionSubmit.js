@@ -5,7 +5,7 @@ import { collection, addDoc } from "firebase/firestore";
 const QuestionSubmit = ({ match, userObj }) => {
     const [submit, setSubmit] = useState("");
 
-    const NoticeID = match.params.id;
+    const QuestionID = match.params.id;
     const UID = authService.currentUser.uid;
 
     const onSubmit = async (event) => {
@@ -16,7 +16,7 @@ const QuestionSubmit = ({ match, userObj }) => {
                 data: Date.now(),
                 uid: UID
             }
-            const loadCollection = collection(dbService, "question", NoticeID, "submit");
+            const loadCollection = collection(dbService, "question", QuestionID, "submit");
 
             //숙제 내용 DB에 작성
             const docRef = await addDoc(loadCollection, data);

@@ -4,6 +4,7 @@ import QuestionList from './QuestionList';
 import QuestionDetail from './QuestionDetail';
 import QuestionSubmit from './QuestionSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
+import QuestionWrite from './QuiestionWrite';
 
 
 const Question = ({ match }) => {
@@ -32,6 +33,10 @@ const Question = ({ match }) => {
                         <div className="articleForm">
                             <NotiSearchBar />
                             <Route exact path={`${match.path}`}><p>글을 선택해 주세요.</p></Route>
+                            <Route
+                                exact path={`${match.path}/write`}
+                                render={({ match }) => <QuestionWrite {...{ match }} />}
+                            />
                             <Route
                                 path={`${match.path}/:id`}
                                 render={({ match }) => <QuestionDetail {...{ match }} />}
@@ -62,6 +67,10 @@ const Question = ({ match }) => {
                     {/* 하단 레이아웃 */}
                     <article>
                         <div className="articleForm">
+                            <Route
+                                path={`${match.path}/write`}
+                                render={({ match }) => <QuestionWrite {...{ match }} />}
+                            />
                             <Route
                                 path={`${match.path}/:id`}
                                 render={({ match }) => <QuestionDetail {...{ match }} />}
