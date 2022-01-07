@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import 'css/login.css';
-import { getAuth, createUserWithEmailAndPassword, createUser, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 
-
-const Login = () => {
+const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [newAccount, setNewAccount] = useState(true);
     const [error, setError] = useState("");
     const onChange = (event) => {
         const { target: { name, value } } = event;
@@ -25,18 +23,6 @@ const Login = () => {
             if (newAccount) {
                 //Create Account
                 data = await createUserWithEmailAndPassword(auth, email, password);
-                // getAuth()
-                //     .createUser({
-                //         email,
-                //         password,
-                //         // displayName: email
-                //     })
-                //     .then((userRecord) => {
-                //         console.log('successfully created new user:', userRecord.uid);
-                //     })
-                //     .catch((error) => {
-                //         console.log(error);
-                //     })
             } else {
                 //Login
                 data = await signInWithEmailAndPassword(auth, email, password);
@@ -44,20 +30,6 @@ const Login = () => {
             console.log(data);
         } catch (error) {
             setError(error.message);
-
-        }
-    }
-
-    const toggleAccount = () => setNewAccount((prev) => !prev)
-    const onSocialClick = (event) => {
-        const { target: { name } } = event;
-        const auth = getAuth();
-        if (name === "google") {
-            const provider = new GoogleAuthProvider();
-            signInWithPopup(auth, provider)
-        } else if (name === "github") {
-            const provider = new GithubAuthProvider();
-            signInWithPopup(auth, provider)
         }
     }
 
@@ -97,7 +69,7 @@ const Login = () => {
                 <div class="loginButton">
                     <input
                         type="submit"
-                        value={newAccount ? "Create Account" : "LOGIN"}
+                        value="Create Account"
                         class="btn" />
                 </div>
                 <span class="joinAccount" onClick={toggleAccount}>{newAccount ? "LOGIN 화면으로 이동" : "SIGN UP 화면으로 이동"}</span>
@@ -108,6 +80,6 @@ const Login = () => {
         </>
     );
 
-}
+};
 
-export default Login;
+export default SignUp;
