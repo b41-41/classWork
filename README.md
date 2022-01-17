@@ -4,7 +4,7 @@
 
 📚학생들의 숙제를 쉽게 관리할 수 있도록 도와주는 웹 어플리케이션📚
 
-1차 배포: 11월 예정
+배포 : 미정
 
 [URL : https://b41-41.github.io/classWork/](https://b41-41.github.io/classWork/)
 
@@ -34,9 +34,13 @@
 
    : Firebase인증 서비스를 사용해서 이메일이나 google아이디를 사용해서 로그인할 수 있습니다.
 
+   ![create](https://user-images.githubusercontent.com/90027202/149802692-a09c2945-2ee4-49af-b3ce-d0f220cf4fbf.gif)
+
 2. **메인 화면**
 
    : 선생님 정보, 최근 숙제, 최근 공지 내용, 최근 수업 내용을 간단하게 확인할 수 있습니다.
+
+   <img width="1215" alt="main" src="https://user-images.githubusercontent.com/90027202/149802817-dfcd65a1-0289-4100-aa5d-73a350750be8.png">
 
 3. **숙제 관리 페이지**
 
@@ -46,9 +50,13 @@
 
    : 질문을 남기고 선생님의 답변을 확인할 수 있는 게시판 페이지입니다.
 
+   ![question](https://user-images.githubusercontent.com/90027202/149803207-b4190747-92aa-4021-94e7-c71f8d9af4aa.gif)
+
 5. **공지사항 게시판**
 
    : 공지사항을 확인할 수 있는 게시판 페이지입니다.
+   
+   ![ScreenRecorderProject6](https://user-images.githubusercontent.com/90027202/149803481-c123e3c2-8eb7-413c-8660-69f25a36a064.gif)
 
 ## ⁉️ 고민한 점
 
