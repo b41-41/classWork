@@ -6,7 +6,7 @@
 
 배포 : 미정
 
-[URL : https://b41-41.github.io/classWork/](https://b41-41.github.io/classWork/)
+[URL : https://festive-hodgkin-e45e28.netlify.app](https://festive-hodgkin-e45e28.netlify.app)
 
 [개발 배경]()
 
@@ -55,7 +55,7 @@
 5. **공지사항 게시판**
 
    : 공지사항을 확인할 수 있는 게시판 페이지입니다.
-   
+
    ![ScreenRecorderProject6](https://user-images.githubusercontent.com/90027202/149803481-c123e3c2-8eb7-413c-8660-69f25a36a064.gif)
 
 ## ⁉️ 고민한 점
