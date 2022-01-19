@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { authService } from "fbase";
 import 'css/style.css'
 import 'css/nav.css'
 import 'css/view.css'
 import 'css/list.css'
 import AppRouter from 'component/Router';
-import { authService } from "fbase";
+import Loading from 'component/Loading';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -24,17 +25,7 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} /> :
-        <>
-          <div className="loading">
-            <div className="logo">
-              <span className="logoWork">Class</span>
-              Work
-            </div>
-            <div className="loading__message">Loading...</div>
-          </div>
-        </>
-      }
+      {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} /> : <Loading />}
     </>
   );
 }

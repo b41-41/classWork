@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Router, Switch, Route } from "react-router-dom";
 import Home from 'routes/Home';
-import Login from 'routes/Login';
+import Login from 'component/Login';
 import Homework from 'routes/Homework';
 import Study from 'routes/Study';
 import Question from 'routes/Question'
@@ -47,8 +47,7 @@ const AppRouter = ({ isLoggedIn }) => {
     }, []);
 
     return (
-        // <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <BrowserRouter basename="/classWork">
+        <BrowserRouter basename="/">
             <Switch>
                 {
                     isLoggedIn

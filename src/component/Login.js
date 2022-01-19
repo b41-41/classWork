@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import 'css/login.css';
-import { getAuth, createUserWithEmailAndPassword, createUser, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, createUser, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 
 const Login = () => {
@@ -54,9 +54,6 @@ const Login = () => {
         const auth = getAuth();
         if (name === "google") {
             const provider = new GoogleAuthProvider();
-            signInWithPopup(auth, provider)
-        } else if (name === "github") {
-            const provider = new GithubAuthProvider();
             signInWithPopup(auth, provider)
         }
     }
