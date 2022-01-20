@@ -6,9 +6,10 @@ import Homework from 'routes/Homework';
 import Study from 'routes/Study';
 import Question from 'routes/Question'
 import Notice from 'routes/Notice';
-import Navigation from 'component/Navigation';
+import Navigation from 'component/Layout/Navigation';
 import Admin from 'component/Admin';
 import listPNG from '../img/list.png';
+import Layout from 'component/Layout';
 
 
 const AppRouter = ({ isLoggedIn }) => {
@@ -52,11 +53,11 @@ const AppRouter = ({ isLoggedIn }) => {
                 {
                     isLoggedIn
                         ? <>
-                            < div className="menuBTN" onClick={mobileMenuOpen}>
+                            {/* <button type="button" className="menuBTN" onClick={mobileMenuOpen}>
                                 <span className="icon">
                                     <img width="20px" src={listPNG} alt="notification" />
                                 </span>
-                            </div>
+                            </button>
                             <div className="box">
                                 <nav>
                                     <Navigation />
@@ -72,7 +73,8 @@ const AppRouter = ({ isLoggedIn }) => {
                             </div>
                             <div className="copyright">
                                 <footer>&copy; Class Work {new Date().getFullYear()}</footer>
-                            </div>
+                            </div> */}
+                            <Layout />
                         </>
                         : <Route exact="exact" path="/"><Login /></Route>
                 }

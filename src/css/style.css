@@ -178,7 +178,7 @@ footer {
   }
 
   .navBar {
-    display: none;
+    display: block;
   }
 
   /* 노티바 부분 숨기기 */

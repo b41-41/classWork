@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { authService } from 'fbase';
+// import { NavBar } from './Style';
+import listPNG from '../../img/list.png';
+// import '../css/style.css';
 
-const Layout = () => {
+
+const Navigation = () => {
+    // 메뉴 onClick 이벤트
+    const [navCurrMenu, setNavCurrMenu] = useState(`MYCLASSES`);
 
     // 로딩되면 첫 번째 메뉴
     const firstMenu = () => {
@@ -17,8 +23,37 @@ const Layout = () => {
         history.push("/");
     };
 
-    // 메뉴 onClick 이벤트
-    const [navCurrMenu, setNavCurrMenu] = useState(`MYCLASSES`)
+    // // 모바일 메뉴 열기, 닫기 스크립트
+    // const mobileMenuOpen = () => {
+    //     if (navBar) {
+    //         document.querySelector('.navBar').style.display = 'none';
+    //         setNavBar(false);
+    //     } else {
+    //         document.querySelector('.navBar').style.display = 'block';
+    //         setNavBar(true);
+    //     }
+    // };
+
+    // // 브라우저 resize할 때, 메뉴 open, close
+    // const handleMobileMenu = () => {
+    //     if (window.innerWidth <= 800) {
+    //         document.querySelector('.navBar').style.display = 'none';
+    //         setNavBar(false);
+    //     } else {
+    //         document.querySelector('.navBar').style.display = 'block';
+    //         setNavBar(true);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     window.addEventListener('resize', handleMobileMenu);
+    //     document.querySelector('.ulMenu').addEventListener('click', handleMobileMenu);
+    //     return () => {
+    //         window.removeEventListener('resize', handleMobileMenu);
+    //     }
+
+    // }, []);
+
 
     const moveRoute = (menu) => {
         const menuColorReset = () => {
@@ -79,15 +114,12 @@ const Layout = () => {
     };
     return (
         <>
-            <div id="logoLink" onClick={() => { moveRoute('MYCLASSES') }}>
-                <span className="logo">
-                    <span className="logoWork">Class</span>
-                    Work
+            {/* <button type="button" className="menuBTN" onClick={mobileMenuOpen}>
+                <span className="icon">
+                    <img width="20px" src={listPNG} alt="notification" />
                 </span>
-                <div className="className">
-                    한국어센터 1급 2반
-                </div>
-            </div>
+            </button> */}
+
             <div className="navBar">
                 <div className="userInfo">
                     <span className="userInfo_name">{authService.currentUser.displayName} 님</span><br />
@@ -113,6 +145,7 @@ const Layout = () => {
                         </div>
                     </ul>
                 </div>
+                {/* </NavBar> */}
             </div >
         </>
 
@@ -121,4 +154,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default Navigation;
