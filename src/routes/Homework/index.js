@@ -4,6 +4,7 @@ import HomeworkList from 'routes/Homework/HomeworkList';
 import HomeworkDetail from 'routes/Homework/HomeworkDetail';
 import HomeworkSubmit from 'routes/Homework/HomeworkSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
+import { DESKTOP_SIZE } from 'const/breakPoint';
 
 
 const Homework = ({ match }) => {
@@ -11,7 +12,7 @@ const Homework = ({ match }) => {
     // 본 내용
     return (
         <>
-            {(window.innerWidth > 1024) ?
+            {(window.innerWidth > DESKTOP_SIZE) ?
                 <>
                     {/* 데스크톱 버전 */}
                     {/* 중앙 레이아웃 */}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { doc, getDoc } from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore";
+import { Comment } from 'component';
 
 const QuestionDetail = ({ match }) => {
 
@@ -45,6 +46,8 @@ const QuestionDetail = ({ match }) => {
             <div className="homeworkContents">
                 {questionContents.content}
             </div>
+            {/* 댓글 영역 */}
+            <Comment />
             <Link to={{
                 pathname: `/Question/${key}/comment`,
                 state: { key }
