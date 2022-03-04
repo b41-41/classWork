@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: block;
+}
+
+.calendar {
+  font-family: "Nanum Gothic", sans-serif;
+  width: 430px;
+  height: 460px;
+  text-align: center;
+}
+
+.month {
+  display: flex;
+  align-items: center;
+  height: calc(460px / 8);
+  justify-content: space-between;
+}
+
+.month__current {
+  font-size: 1.2rem;
+  width: 60%;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.month__current,
+.month__handle,
+.month__returnCurrent {
+  font-weight: 800;
+}
+
+.month__handle,
+.month__returnCurrent {
+  border: 0;
+  background-color: #faf9f9;
+  padding: 8px 30px;
+  margin: 0 5px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.month__returnCurrent {
+  padding: 8px 10px;
+  width: 90px;
+}
+
+.month__handle:hover,
+.month__returnCurrent:hover {
+  cursor: pointer;
+  background-color: rgb(219, 219, 219);
+  transition: 100ms;
+}
+
+.month__handle {
+  padding: 8px 10px;
+}
+
+.week {
+  display: flex;
+  align-items: center;
+  height: calc(460px / 8);
+}
+
+.week div,
+.day div {
+  width: calc(430px / 7);
+}
+
+.day {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  height: calc((460px / 8) * 5);
+}
+
+.day div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: calc(430px / 7);
+}
+
+.day div:hover {
+  cursor: pointer;
+  background-color: #faf9f9;
+  transition: 100ms;
+}
+
+.day__today,
+.day__select {
+  border-radius: 50%;
+}
+
+.day__select,
+.day div:focus {
+  background-color: rgb(141, 141, 141);
+  color: white;
+}
+
+.day__today {
+  background-color: #3b83f7;
+  color: white;
+}
+
+.day__prev,
+.day__next {
+  color: #c7c7c7;
+}
