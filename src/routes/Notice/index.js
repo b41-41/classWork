@@ -4,6 +4,7 @@ import NoticeList from 'routes/Notice/NoticeList';
 import NoticeDetail from 'routes/Notice/NoticeDetail';
 import NoticeSubmit from 'routes/Notice/NoticeSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
+import { DESKTOP_SIZE } from 'const/breakPoint';
 
 
 const Notice = ({ match }) => {
@@ -11,7 +12,7 @@ const Notice = ({ match }) => {
     // 본 내용
     return (
         <>
-            {(window.innerWidth > 1024) ?
+            {(window.innerWidth > DESKTOP_SIZE) ?
                 <>
                     {/* 데스크톱 버전 */}
                     {/* 중앙 레이아웃 */}

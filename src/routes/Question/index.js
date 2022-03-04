@@ -5,6 +5,7 @@ import QuestionDetail from './QuestionDetail';
 import QuestionSubmit from './QuestionSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
 import QuestionWrite from './QuiestionWrite';
+import { DESKTOP_SIZE } from 'const/breakPoint';
 
 
 const Question = ({ match }) => {
@@ -12,7 +13,7 @@ const Question = ({ match }) => {
     // 본 내용
     return (
         <>
-            {(window.innerWidth > 1024) ?
+            {(window.innerWidth > DESKTOP_SIZE) ?
                 <>
                     {/* 데스크톱 버전 */}
                     {/* 중앙 레이아웃 */}
