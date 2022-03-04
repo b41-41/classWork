@@ -5,6 +5,7 @@ import { Route, Link } from "react-router-dom";
 import StudyList from './StudyList';
 import NotiSearchBar from 'component/NotiSearchBar';
 import StudyDetail from './StudyDetail';
+import { DESKTOP_SIZE } from 'const/breakPoint';
 
 const Study = ({ match }) => {
     //useState
@@ -68,7 +69,7 @@ const Study = ({ match }) => {
 
     return (
         <>
-            {(window.innerWidth > 1024) ?
+            {(window.innerWidth > DESKTOP_SIZE) ?
                 <>
                     <div class="list">
                         <div class="listForm">
