@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dbService } from 'fbase';
 import { collection, getDocs } from "firebase/firestore";
-import Calandar from 'component/Calandar';
+import { Calendar } from 'component';
 
 const Home = ({ match }) => {
     const [studyContents, setStudyContents] = useState([]);
@@ -126,7 +126,7 @@ const Home = ({ match }) => {
                     </div>
                     <h2>CALENDER</h2>
                     <div className="calender">
-                        <Calandar />
+                        <Calendar />
                     </div>
                 </div>
             </div>
