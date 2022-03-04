@@ -1,38 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { Comment } from 'component';
+import { stampToDate_yymmdd } from 'utils/stampToDate_yymmdd';
 
 const QuestionDetail = ({ match }) => {
+    const QUESTION = "question";
 
     const [questionContents, setQuestionContents] = useState({});
+    const [comments, setComments] = useState([]);
 
     const key = match.params.id;
 
-    //본문 내용 읽어오기 (onClick Event)
+    //본문 내용 읽어오기 
     const sendQuestionContents = async () => {
         try {
-            const HWref = doc(dbService, "question", `${key}`);
+            const HWref = doc(dbService, QUESTION, key);
             const getQuestionContents = await getDoc(HWref);
             setQuestionContents(getQuestionContents.data());
         } catch (e) {
-            console.error("Error onClick: ", e);
+            console.error("내용 불러오기 오류 : ", e);
         }
     };
+
+    //코멘트 읽어오기
+    const sendComment = async () => {
+        try {
+            const commentRef = collection(dbService, QUESTION, key, "reply");
+            const getComment = await getDocs(commentRef);
+            setComments([]); //코멘트 초기화
+            getComment.forEach(data => {
+                const datas = {
+                    ...data.data(),
+                    id: data.id,
+                };
+                setComments([datas]);
+            })
+        } catch (e) {
+            console.error("코멘트 불러오기 오류 : ", e);
+        }
+    }
 
     useEffect(() => {
         sendQuestionContents();
+        sendComment();
     }, [key])
 
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
 
     return (
         <>
@@ -47,7 +61,7 @@ const QuestionDetail = ({ match }) => {
                 {questionContents.content}
             </div>
             {/* 댓글 영역 */}
-            <Comment />
+            <Comment comments={comments} />
             <Link to={{
                 pathname: `/Question/${key}/comment`,
                 state: { key }
