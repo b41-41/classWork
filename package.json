@@ -46,5 +46,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://festive-hodgkin-e45e28.netlify.app"
+  "homepage": "https://festive-hodgkin-e45e28.netlify.app",
+  "devDependencies": {
+    "@types/styled-components": "^5.1.24"
+  }
 }
