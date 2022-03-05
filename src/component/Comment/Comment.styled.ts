@@ -53,3 +53,11 @@ export const Content = styled.div`
   margin: 25px 0 0 0;
   line-height: 12px;
 `;
+
+export const CommentWrapper = styled.div`
+  & + div {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: solid 1px #c2c2c2;
+  }
+`;
