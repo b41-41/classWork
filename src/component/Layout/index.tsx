@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "routes/Home";
 import Homework from "routes/Homework";
 import Study from "routes/Study";

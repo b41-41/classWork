@@ -6,6 +6,7 @@ import { Calendar } from 'component';
 import { stampToDate_yymmdd } from 'utils';
 import { TEACHER_NAME, TEACHER_EMAIL } from 'const/teacherInfo';
 import { ChangeCurrentMenu } from 'redux/utils';
+import { CLASSNAME } from "const/ClassInfo";
 
 const Home = ({ match }) => {
     ChangeCurrentMenu("MYCLASSES");
@@ -65,7 +66,7 @@ const Home = ({ match }) => {
                         MY CLASSES
                     </div>
                     <div className="listClassName">
-                        한국어센터 1급 2반
+                        {CLASSNAME}
                     </div>
                     <div className="teacherForm">
                         <div className="teacherPhoto">
