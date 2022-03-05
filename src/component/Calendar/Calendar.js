@@ -171,7 +171,6 @@ const Calendar = () => {
                     {returnPrevDaysArray(prevYear(), prevMonth())}
                     {returnDaysArray(dateValue.year, dateValue.month)}
                     {returnNextDaysArray(nextYear(), nextMonth())}
-                    {console.log(`선택된 날짜: ${selectedDate.year}.${selectedDate.month}.${selectedDate.day}`)}
                 </div>
 
             </div>
