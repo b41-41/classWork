@@ -46,7 +46,6 @@ const HomeworkSubmit = ({ match }) => {
                 createAt: Date.now(),
                 uid: UID
             }
-            // const loadDoc = doc(dbService, "homework", HomeworkID, "submit", UID); //숙제 내용이 들어갈 데이터베이스 위치
             await setDoc(loadDoc, data); //숙제 내용 DB에 작성
         } catch (e) {
             console.error("Error adding document: ", e);
