@@ -5,7 +5,7 @@ import { LoginInfoForm } from 'component';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCurrentMenu } from 'redux/slices/menu';
 
-const Navigation = () => {
+const Navigation = ({ navBarOpen }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -73,7 +73,7 @@ const Navigation = () => {
     };
     return (
         <>
-            <div className="navBar">
+            <div className="navBar" style={{ display: (navBarOpen ? "block" : "none") }}>
                 <LoginInfoForm />
                 <div className="signOut" onClick={onLogOutClick}>SIGN OUT</div>
                 <div className="menuForm">

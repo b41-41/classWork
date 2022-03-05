@@ -82,6 +82,7 @@ footer {
 }
 
 .menuBTN {
+  all: unset;
   display: none;
   position: absolute;
   right: 30px;

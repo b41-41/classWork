@@ -18,13 +18,18 @@ const Layout: React.FC<PropNavBar> = () => {
 
   //모바일 네비게이션 바 오븐 버튼 액션
   const mobileMenuOpen = (): void => {
-    navBarOpen ? setNavBarOpen(false) : setNavBarOpen(true);
+    setNavBarOpen(!navBarOpen);
   };
 
   //리사이즈 네비게이션 바 오픈 액션
   const switchMenuOpen = (): void => {
     window.innerWidth < 800 ? setNavBarOpen(false) : setNavBarOpen(true);
   };
+
+  //첫 랜더 시 800px 미만인 경우 메뉴 숨기기
+  useEffect(() => {
+    window.innerWidth < 800 && setNavBarOpen(false);
+  }, []);
 
   //리사이즈 이벤트
   useEffect(() => {
@@ -39,9 +44,9 @@ const Layout: React.FC<PropNavBar> = () => {
       <div className="box">
         <nav>
           <ClassInfo />
-          <div style={{ display: navBarOpen ? "block" : "none" }}>
-            <Navigation />
-          </div>
+          {/* <div style={{ display: navBarOpen ? "block" : "none" }}> */}
+          <Navigation navBarOpen={navBarOpen} />
+          {/* </div> */}
         </nav>
         <div className="main">
           <Route exact path="/" component={Home} />
