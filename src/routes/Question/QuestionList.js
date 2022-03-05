@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, getDocs } from "firebase/firestore";
+import { stampToDate_yymmdd } from 'utils';
 
 const QuestionList = () => {
     const [submits, setSubmits] = useState([]);
@@ -23,24 +24,6 @@ const QuestionList = () => {
     useEffect(() => {
         getSubmits();
     }, [])
-
-    // 타임스템프 변환
-    const stampToDate = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getMonth() + 1}/${date.getDate()}`;
-        }
-        return;
-    };
-
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
 
     return (
         <>
