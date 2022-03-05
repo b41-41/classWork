@@ -1,1 +1,1 @@
-export { default as updateCurrentMenu } from "./updateCurrentMenu";
+export { default as ChangeCurrentMenu } from "./ChangeCurrentMenu";
