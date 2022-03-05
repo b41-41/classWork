@@ -1,30 +1,37 @@
 import React, { useState } from "react";
 import { dbService, authService } from 'fbase';
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
-const HomeworkSubmit = ({ match, userObj }) => {
+const HomeworkSubmit = ({ match }) => {
+
+    //라우터
+    const history = useHistory();
+    //상태
     const [submit, setSubmit] = useState("");
-
+    const userState = useSelector((state) => state.userInfo);
+    const userInfo = userState.userInfo;
+    //값
     const HomeworkID = match.params.id;
     const UID = authService.currentUser.uid;
 
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const data = {
+            const data = {      //데이터베이스에 들어갈 내용
+                name: userInfo.displayName,
                 text: submit,
-                data: Date.now(),
+                createAt: Date.now(),
                 uid: UID
             }
-            const loadCollection = collection(dbService, "homework", HomeworkID, "comment");
-
-            //숙제 내용 DB에 작성
-            const docRef = await addDoc(loadCollection, data);
-            console.log("Document written with ID: ", docRef.id);
+            const loadDoc = doc(dbService, "homework", HomeworkID, "submit", UID); //숙제 내용이 들어갈 데이터베이스 위치
+            await setDoc(loadDoc, data); //숙제 내용 DB에 작성
         } catch (e) {
             console.error("Error adding document: ", e);
         }
-        setSubmit("");
+        setSubmit(""); //입력폼 초기화
+        history.goBack();
     }
 
     const onChange = (event) => {
@@ -34,7 +41,6 @@ const HomeworkSubmit = ({ match, userObj }) => {
 
     return (
         <>
-            {console.log(match.params.id)}
             <form className="HomeworkSubmitTextArea" onSubmit={onSubmit}>
                 <textarea
                     className="HomeworkSubmitTextArea__textarea"

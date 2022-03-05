@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, getDocs, orderBy } from "firebase/firestore"
@@ -7,7 +7,7 @@ import { stampToDate, chkDeadline } from 'utils';
 
 const HomeworkList = () => {
     const [submits, setSubmits] = useState([]);
-    const history = useHistory();
+    // const history = useHistory();
 
     //숙제 리스트 받아오기
     const homeworkDB = collection(dbService, "homework")
