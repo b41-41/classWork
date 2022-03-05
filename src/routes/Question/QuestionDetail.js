@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { Comment } from 'component';
-import { stampToDate_yymmdd } from 'utils/stampToDate_yymmdd';
+import { stampToDate_yymmdd } from 'utils';
 
 const QuestionDetail = ({ match }) => {
     const QUESTION = "question";
@@ -29,23 +29,27 @@ const QuestionDetail = ({ match }) => {
         try {
             const commentRef = collection(dbService, QUESTION, key, "reply");
             const getComment = await getDocs(commentRef);
+            const commentArray = [];
             setComments([]); //코멘트 초기화
             getComment.forEach(data => {
                 const datas = {
                     ...data.data(),
                     id: data.id,
                 };
-                setComments([datas]);
+                commentArray.push(datas);
             })
+            setComments(commentArray);
         } catch (e) {
             console.error("코멘트 불러오기 오류 : ", e);
         }
     }
 
+    //주소 값이 바뀔 때마다 코멘트, 본문 내용 읽어오기
     useEffect(() => {
         sendQuestionContents();
         sendComment();
     }, [key])
+
 
 
     return (
@@ -78,5 +82,4 @@ const QuestionDetail = ({ match }) => {
         </>
     )
 }
-
 export default QuestionDetail;
