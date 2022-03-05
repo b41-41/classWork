@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { collection, getDocs, orderBy } from "firebase/firestore"
+import { collection, getDocs } from "firebase/firestore"
+import { stampToDate } from 'utils';
 
 const StudyList = () => {
     const [submits, setSubmits] = useState([]);
@@ -26,14 +27,6 @@ const StudyList = () => {
         getSubmits();
     }, [])
 
-    // 타임스템프 변환
-    const stampToDate = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getMonth() + 1}/${date.getDate()}`;
-        }
-        return;
-    };
 
     return (
         <>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { dbService } from 'fbase';
 import { collection, getDocs } from "firebase/firestore";
 import { Calendar } from 'component';
+import { stampToDate_yymmdd } from 'utils';
 
 const Home = ({ match }) => {
     const [studyContents, setStudyContents] = useState([]);
@@ -52,14 +53,6 @@ const Home = ({ match }) => {
         sendContents();
     }, []);
 
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
 
     return (
         <>
@@ -69,11 +62,11 @@ const Home = ({ match }) => {
                         MY CLASSES
                     </div>
                     <div className="listClassName">
-                        한국어센터 1급 2반
+                        한국어센터 1급 2반
                     </div>
                     <div className="teacherForm">
                         <div className="teacherPhoto">
-                            <img className="teacherJPG" width="auto" width="150px" src="./img/teacher.png" alt="teacher" />
+                            <img className="teacherJPG" width="150px" src="./img/teacher.png" alt="teacher" />
                         </div>
                         <div className="teacherInfo">
                             <span className="teacherTag">NAME</span><br />

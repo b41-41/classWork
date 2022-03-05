@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, getDocs, orderBy } from "firebase/firestore"
+import { stampToDate } from 'utils';
 
 const HomeworkList = () => {
     const [submits, setSubmits] = useState([]);
@@ -25,24 +26,6 @@ const HomeworkList = () => {
     useEffect(() => {
         getSubmits();
     }, [])
-
-    // 타임스템프 변환
-    const stampToDate = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getMonth() + 1}/${date.getDate()}`;
-        }
-        return;
-    };
-
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
 
     //숙제 마감 여부 계산
     const chkDeadline = (deadline) => {

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from 'fbase';
 import { doc, getDoc } from "firebase/firestore"
+import { stampToDate, stampToDate_yymmdd } from 'utils';
+
 
 const StudyDetail = ({ match }) => {
 
@@ -23,14 +25,7 @@ const StudyDetail = ({ match }) => {
         sendStudyContents();
     }, [key])
 
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
+
 
     //남은 마감 날짜 계산
     const printDday = (deadline) => {

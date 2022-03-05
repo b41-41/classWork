@@ -24,7 +24,7 @@ const Question = ({ match }) => {
                                     Question
                                 </div>
                             </Link>
-                            {/* 숙제 리스트 부분 */}
+                            {/* 숙제 리스트 부분 */}
                             <QuestionList />
                         </div>
                     </div>

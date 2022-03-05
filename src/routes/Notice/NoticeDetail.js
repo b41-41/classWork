@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { doc, getDoc } from "firebase/firestore"
+import { stampToDate_yymmdd } from 'utils';
 
 const NoticeDetail = ({ match }) => {
 
@@ -27,14 +28,7 @@ const NoticeDetail = ({ match }) => {
         sendNoticeContents();
     }, [key])
 
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
+
 
     return (
         <>
