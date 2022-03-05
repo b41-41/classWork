@@ -13,6 +13,8 @@ html {
 }
 
 body {
+  margin: 0 auto;
+  max-width: 1440px;
   background-color: #f2eeea;
   font-family: "Nanum Gothic", sans-serif;
   text-align: center;
