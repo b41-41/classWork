@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import Login from 'component/Login';
 import Layout from 'component/Layout';
 
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = () => {
+    //redux
+    const userState = useSelector(state => state.userInfo);
+    const isLogin = userState.isLogin;
 
     // 모바일 메뉴 열기, 닫기 스크립트
     const [navBar, setNavBar] = useState(false);
@@ -30,7 +34,7 @@ const AppRouter = ({ isLoggedIn }) => {
     };
 
     useEffect(() => {
-        if (isLoggedIn) {
+        if (isLogin) {
             window.addEventListener('resize', handleMobileMenu);
             document.querySelector('.ulMenu').addEventListener('click', handleMobileMenu);
             return () => {
@@ -42,7 +46,7 @@ const AppRouter = ({ isLoggedIn }) => {
     return (
         <BrowserRouter basename="/">
             <Switch>
-                {isLoggedIn ? <Layout /> : <Route exact="exact" path="/"><Login /></Route>}
+                {isLogin ? <Layout /> : <Route exact="exact" path="/"><Login /></Route>}
             </Switch>
         </BrowserRouter>
     )

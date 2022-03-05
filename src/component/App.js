@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { authService } from "fbase";
-import 'css/style.css'
-import 'css/nav.css'
-import 'css/view.css'
-import 'css/list.css'
 import AppRouter from 'component/Router';
 import Loading from 'component/Loading';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateLogin, updateUserInfo } from 'redux/slices/user';
+import 'css/style.css';
+import 'css/nav.css';
+import 'css/view.css';
+import 'css/list.css';
 
 function App() {
+  const dispatch = useDispatch();
+
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userObj, setUserObj] = useState(null);
+  // const userState = useSelector(state => state.userInfo);
+  // const isLogin = userState.isLogin;
+  // const userInfo = userState.userInfo;
+
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true)
-        setUserObj(user);
+        dispatch(updateLogin(true));
+        dispatch(updateUserInfo(user));
       } else {
-        setIsLoggedIn(false)
+        dispatch(updateLogin(false));
       }
       setInit(true);
     })
@@ -25,7 +31,7 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} /> : <Loading />}
+      {init ? <AppRouter /> : <Loading />}
     </>
   );
 }
