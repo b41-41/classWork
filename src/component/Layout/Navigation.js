@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { authService } from 'fbase';
-// import { NavBar } from './Style';
-import listPNG from '../../img/list.png';
-// import '../css/style.css';
-
+import { LoginInfoForm } from 'component';
 
 const Navigation = () => {
+
     // 메뉴 onClick 이벤트
     const [navCurrMenu, setNavCurrMenu] = useState(`MYCLASSES`);
 
@@ -22,38 +20,6 @@ const Navigation = () => {
         authService.signOut();
         history.push("/");
     };
-
-    // // 모바일 메뉴 열기, 닫기 스크립트
-    // const mobileMenuOpen = () => {
-    //     if (navBar) {
-    //         document.querySelector('.navBar').style.display = 'none';
-    //         setNavBar(false);
-    //     } else {
-    //         document.querySelector('.navBar').style.display = 'block';
-    //         setNavBar(true);
-    //     }
-    // };
-
-    // // 브라우저 resize할 때, 메뉴 open, close
-    // const handleMobileMenu = () => {
-    //     if (window.innerWidth <= 800) {
-    //         document.querySelector('.navBar').style.display = 'none';
-    //         setNavBar(false);
-    //     } else {
-    //         document.querySelector('.navBar').style.display = 'block';
-    //         setNavBar(true);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     window.addEventListener('resize', handleMobileMenu);
-    //     document.querySelector('.ulMenu').addEventListener('click', handleMobileMenu);
-    //     return () => {
-    //         window.removeEventListener('resize', handleMobileMenu);
-    //     }
-
-    // }, []);
-
 
     const moveRoute = (menu) => {
         const menuColorReset = () => {
@@ -114,17 +80,12 @@ const Navigation = () => {
     };
     return (
         <>
-            {/* <button type="button" className="menuBTN" onClick={mobileMenuOpen}>
-                <span className="icon">
-                    <img width="20px" src={listPNG} alt="notification" />
-                </span>
-            </button> */}
-
             <div className="navBar">
-                <div className="userInfo">
-                    <span className="userInfo_name">{authService.currentUser.displayName} 님</span><br />
-                    <span className="userInfo_info">{authService.currentUser.email}</span>
-                </div>
+                {/* <div className="userInfo">
+                    <span className="userInfo_name">{userInfo.displayName} 님</span><br />
+                    <span className="userInfo_info">{userInfo.email}</span>
+                </div> */}
+                <LoginInfoForm />
                 <div className="signOut" onClick={onLogOutClick}>SIGN OUT</div>
                 <div className="menuForm">
                     <ul className="ulMenu">
@@ -145,7 +106,6 @@ const Navigation = () => {
                         </div>
                     </ul>
                 </div>
-                {/* </NavBar> */}
             </div >
         </>
 
