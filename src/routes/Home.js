@@ -5,8 +5,10 @@ import { collection, getDocs } from "firebase/firestore";
 import { Calendar } from 'component';
 import { stampToDate_yymmdd } from 'utils';
 import { TEACHER_NAME, TEACHER_EMAIL } from 'const/teacherInfo';
+import { ChangeCurrentMenu } from 'redux/utils';
 
 const Home = ({ match }) => {
+    ChangeCurrentMenu("MYCLASSES");
     const [studyContents, setStudyContents] = useState([]);
     const [noticeContents, setNoticeContents] = useState([]);
     const [homeworkContents, setHomeworkContents] = useState([]);

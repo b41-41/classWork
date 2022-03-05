@@ -6,8 +6,10 @@ import StudyList from './StudyList';
 import NotiSearchBar from 'component/NotiSearchBar';
 import StudyDetail from './StudyDetail';
 import { DESKTOP_SIZE } from 'const/breakPoint';
+import { ChangeCurrentMenu } from 'redux/utils';
 
 const Study = ({ match }) => {
+    ChangeCurrentMenu("STUDY");
     //useState
     const [submits, setSubmits] = useState([]);
     const [studyContents, setStudyContents] = useState({

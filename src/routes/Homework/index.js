@@ -5,9 +5,11 @@ import HomeworkDetail from 'routes/Homework/HomeworkDetail';
 import HomeworkSubmit from 'routes/Homework/HomeworkSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
 import { DESKTOP_SIZE } from 'const/breakPoint';
+import { ChangeCurrentMenu } from 'redux/utils';
 
 
 const Homework = ({ match }) => {
+    ChangeCurrentMenu("HOMEWORK");
 
     // 본 내용
     return (

@@ -6,9 +6,11 @@ import QuestionSubmit from './QuestionSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
 import QuestionWrite from './QuiestionWrite';
 import { DESKTOP_SIZE } from 'const/breakPoint';
+import { ChangeCurrentMenu } from 'redux/utils';
 
 
 const Question = ({ match }) => {
+    ChangeCurrentMenu("QUESTION");
 
     // 본 내용
     return (

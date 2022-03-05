@@ -8,16 +8,9 @@ import { updateCurrentMenu } from 'redux/slices/menu';
 const Navigation = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const locationState = history.location.state.menu;
 
     const currMenuState = useSelector(state => state.menu);
     const currMenu = currMenuState.currMenu;
-
-    // 첫 로딩 때 메뉴 상태 업데이트
-    const firstMenu = () => {
-        dispatch(updateCurrentMenu(locationState));
-    };
-    useEffect(firstMenu, []);
 
     // 로그아웃 function
     const onLogOutClick = () => {

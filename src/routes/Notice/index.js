@@ -5,9 +5,12 @@ import NoticeDetail from 'routes/Notice/NoticeDetail';
 import NoticeSubmit from 'routes/Notice/NoticeSubmit';
 import NotiSearchBar from 'component/NotiSearchBar';
 import { DESKTOP_SIZE } from 'const/breakPoint';
+import { ChangeCurrentMenu } from 'redux/utils';
+
 
 
 const Notice = ({ match }) => {
+    ChangeCurrentMenu("NOTICE");
 
     // 본 내용
     return (
