@@ -4,6 +4,7 @@ import { dbService } from 'fbase';
 import { collection, getDocs } from "firebase/firestore";
 import { Calendar } from 'component';
 import { stampToDate_yymmdd } from 'utils';
+import { TEACHER_NAME, TEACHER_EMAIL } from 'const/teacherInfo';
 
 const Home = ({ match }) => {
     const [studyContents, setStudyContents] = useState([]);
@@ -70,9 +71,9 @@ const Home = ({ match }) => {
                         </div>
                         <div className="teacherInfo">
                             <span className="teacherTag">NAME</span><br />
-                            <span className="teacherContent">정다빈</span><br />
+                            <span className="teacherContent">{TEACHER_NAME}</span><br />
                             <span className="teacherTag">E-MAIL</span><br />
-                            <span className="teacherContent">malgolil41@gmail.com</span><br />
+                            <span className="teacherContent">{TEACHER_EMAIL}</span><br />
                             <span className="teacherTag2">
                                 ✉️ Send Message
                             </span>
