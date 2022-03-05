@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, getDocs, orderBy } from "firebase/firestore"
-import { stampToDate } from 'utils';
+import { stampToDate, chkDeadline } from 'utils';
 
 const HomeworkList = () => {
     const [submits, setSubmits] = useState([]);
@@ -27,15 +27,6 @@ const HomeworkList = () => {
         getSubmits();
     }, [])
 
-    //숙제 마감 여부 계산
-    const chkDeadline = (deadline) => {
-        const today = new Date();
-        if (deadline.toDate() < today) {
-            return `🔚 마감 되었습니다.`
-        } else {
-            return `✔ 숙제를 내세요.`
-        }
-    }
 
     return (
         <>

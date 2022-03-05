@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { collection, doc, getDoc } from "firebase/firestore"
-import { stampToDate_yymmdd } from 'utils';
+import { stampToDate_yymmdd, printDday } from 'utils';
 
 const HomeworkDetail = ({ match }) => {
 
@@ -27,22 +27,6 @@ const HomeworkDetail = ({ match }) => {
     useEffect(() => {
         sendHWContents();
     }, [key])
-
-    //남은 마감 날짜 계산
-    const printDday = (deadline) => {
-        if (deadline === undefined) {
-            return;
-        }
-        const today = new Date();
-        const endDay = deadline.toDate();
-        const endDayDistance = (endDay - today);
-        const dday = Math.floor(endDayDistance / (1000 * 60 * 60 * 24));
-        if (endDay < today) {
-            return `마감`
-        } else {
-            return (`-${dday}일`)
-        }
-    }
 
     return (
         <>

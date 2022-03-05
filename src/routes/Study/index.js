@@ -32,40 +32,11 @@ const Study = ({ match }) => {
         });
     };
 
-    //본문 내용 읽어오기 (onClick Event)
-    const sendStudyContents = async (key) => {
-        try {
-            const studyRef = doc(dbService, "study", `${key}`);
-            const getStudyContents = await getDoc(studyRef);
-            setStudyContents(getStudyContents.data());
-        } catch (e) {
-            console.error("Error onClick: ", e);
-        }
-    };
 
     //db값 얻어오기 useEffect
     useEffect(() => {
         getSubmits();
     }, []);
-
-    // 타임스템프 변환
-    const stampToDate = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getMonth() + 1}/${date.getDate()}`;
-        }
-        return;
-    };
-
-    // 타임스템프 to date (yy.mm.dd)
-    const stampToDate_yymmdd = (timestamp) => {
-        if (timestamp) {
-            const date = timestamp.toDate();
-            return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
-        }
-        return;
-    };
-
 
     return (
         <>
