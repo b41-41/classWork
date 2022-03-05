@@ -2,89 +2,85 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router';
 import { authService } from 'fbase';
 import { LoginInfoForm } from 'component';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCurrentMenu } from 'redux/slices/menu';
 
 const Navigation = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const locationState = history.location.state.menu;
 
-    // 메뉴 onClick 이벤트
-    const [navCurrMenu, setNavCurrMenu] = useState(`MYCLASSES`);
+    const currMenuState = useSelector(state => state.menu);
+    const currMenu = currMenuState.currMenu;
 
-    // 로딩되면 첫 번째 메뉴
+    // 첫 로딩 때 메뉴 상태 업데이트
     const firstMenu = () => {
-        document.querySelector(`#${navCurrMenu}`).style.color = "#3f3e3e";
+        dispatch(updateCurrentMenu(locationState));
     };
     useEffect(firstMenu, []);
 
     // 로그아웃 function
-    const history = useHistory();
     const onLogOutClick = () => {
         authService.signOut();
         history.push("/");
     };
 
-    const moveRoute = (menu) => {
-        const menuColorReset = () => {
-            document.querySelector("#MYCLASSES").style.color = "#cac9cd";
-            document.querySelector("#HOMEWORK").style.color = "#cac9cd";
-            document.querySelector("#STUDY").style.color = "#cac9cd";
-            document.querySelector("#QUESTION").style.color = "#cac9cd";
-            document.querySelector("#NOTICE").style.color = "#cac9cd";
-        }
+    //메뉴 색깔 초기화
+    const menuColorReset = () => {
+        document.querySelector("#MYCLASSES").style.color = "#cac9cd";
+        document.querySelector("#HOMEWORK").style.color = "#cac9cd";
+        document.querySelector("#STUDY").style.color = "#cac9cd";
+        document.querySelector("#QUESTION").style.color = "#cac9cd";
+        document.querySelector("#NOTICE").style.color = "#cac9cd";
+    }
 
-        const currentMenuColorChange = () => {
-            document.querySelector(`#${menu}`).style.color = "#3f3e3e";
-        }
-
+    // 메뉴 강조 (스타일)
+    useEffect(() => {
         menuColorReset();
-        currentMenuColorChange();
+        document.querySelector(`#${currMenu}`).style.color = "#3f3e3e";
+    }, [currMenu])
+
+    const moveRoute = (menu) => {
+        dispatch(updateCurrentMenu(menu));
 
         switch (menu) {
             case `MYCLASSES`:
-                setNavCurrMenu(menu);
                 history.push({
                     pathname: "/",
-                    state: { navCurrMenu: navCurrMenu }
+                    state: { menu }
                 });
                 break;
             case `HOMEWORK`:
-                setNavCurrMenu(menu);
                 history.push({
                     pathname: "/Homework",
-                    state: { navCurrMenu: navCurrMenu }
+                    state: { menu }
                 });
                 break;
             case `STUDY`:
-                setNavCurrMenu(menu);
                 history.push({
                     pathname: "/Study",
-                    state: { navCurrMenu: navCurrMenu }
+                    state: { menu }
                 });
                 break;
-            case `QUESTION`:
-                setNavCurrMenu(menu);
+            case 'QUESTION':
                 history.push({
                     pathname: "/Question",
-                    state: { navCurrMenu: navCurrMenu }
+                    state: { menu }
                 });
                 break;
             case `NOTICE`:
-                setNavCurrMenu(menu);
                 history.push({
                     pathname: "/Notice",
-                    state: { navCurrMenu: navCurrMenu }
+                    state: { menu }
                 });
                 break;
             default:
                 break;
         }
-
     };
     return (
         <>
             <div className="navBar">
-                {/* <div className="userInfo">
-                    <span className="userInfo_name">{userInfo.displayName} 님</span><br />
-                    <span className="userInfo_info">{userInfo.email}</span>
-                </div> */}
                 <LoginInfoForm />
                 <div className="signOut" onClick={onLogOutClick}>SIGN OUT</div>
                 <div className="menuForm">
