@@ -1,4 +1,4 @@
-export const stampToDate_yymmdd = (timestamp) => {
+const stampToDate_yymmdd = (timestamp) => {
   if (timestamp) {
     const date = timestamp.toDate();
     return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
