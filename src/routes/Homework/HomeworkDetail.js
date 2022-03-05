@@ -53,6 +53,7 @@ const HomeworkDetail = ({ match }) => {
                 <span className="homeworkTitleBar__type">{HWContents.type}</span><br />
                 <div className="homeworkTitleBar__title">{HWContents.title}</div><br />
                 <span className="homeworkTitleBar__dday">{printDday(HWContents.deadline)}</span>
+                <span className="homeworkTitleBar__dday" style={{ backgroundColor: "red" }}>{HWSubmitCheck ? "제출 완료" : "미제출"}</span>
                 <span className="homeworkTitleBar__deadline">
                     ~{stampToDate_yymmdd(HWContents.deadline)}
                 </span>
@@ -62,7 +63,7 @@ const HomeworkDetail = ({ match }) => {
             </div>
             <Link to={{
                 pathname: `/Homework/${key}/submit`,
-                state: { key }
+                state: { key, HWSubmitCheck, }
             }}>
                 <div className="homeworkSubmit">
                     <div className="homeworkSubmitL">
