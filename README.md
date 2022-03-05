@@ -4,9 +4,7 @@
 
 📚학생들의 숙제를 쉽게 관리할 수 있도록 도와주는 웹 어플리케이션📚
 
-배포 : 미정
-
-[URL : https://festive-hodgkin-e45e28.netlify.app](https://festive-hodgkin-e45e28.netlify.app)
+[URL : https://classwork41.netlify.app/p](https://classwork41.netlify.app/)
 
 [개발 배경]()
 
