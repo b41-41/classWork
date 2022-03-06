@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dbService, authService } from 'fbase';
+import { useSelector } from "react-redux";
 import { collection, addDoc } from "firebase/firestore";
 
 const QuestionSubmit = ({ match, userObj }) => {
@@ -7,16 +8,21 @@ const QuestionSubmit = ({ match, userObj }) => {
 
     const QuestionID = match.params.id;
     const UID = authService.currentUser.uid;
+    const userState = useSelector((state) => state.userInfo);
+    const userInfo = userState.userInfo;
+    console.log('userInfo', userInfo)
 
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
             const data = {
-                text: submit,
+                content: submit,
                 data: Date.now(),
-                uid: UID
+                uid: UID,
+                writer: userInfo.displayName,
+                avatar: userInfo.reloadUserInfo.photoUrl,
             }
-            const loadCollection = collection(dbService, "question", QuestionID, "submit");
+            const loadCollection = collection(dbService, "question", QuestionID, "reply");
 
             //숙제 내용 DB에 작성
             const docRef = await addDoc(loadCollection, data);
