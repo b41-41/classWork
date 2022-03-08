@@ -1,7 +1,7 @@
 export type CommentType = {
   comments: {
     content: string;
-    date: Date;
+    createAt: Date;
     writer: string;
     id: string;
   }[];
