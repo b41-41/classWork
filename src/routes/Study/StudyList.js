@@ -31,48 +31,26 @@ const StudyList = () => {
     return (
         <>
             {submits.map((study, i) =>
-                i % 2 === 0 ?
-                    <Link to={`/Study/${study.id}`} >
-                        <div className="homeworkListForm" key={study.id}>
-                            <div className="homeworkListForm_l">
-                                <div className="homeworkListDate">
-                                    {stampToDate(study.date)}
-                                </div>
-                            </div>
-                            <div className="homeworkListForm_r">
-                                <div className="homeworkListTag">
-                                    {study.chapter} {study.type}
-                                </div>
-                                <div className="homeworkListTitle">
-                                    {study.title}
-                                </div>
-                                <div className="homeworkListMTag">
-                                    📚 {study.page}
-                                </div>
+                <Link to={`/Study/${study.id}`} >
+                    <div className={i % 2 === 0 ? "homeworkListForm" : "homeworkListForm2"} key={study.id}>
+                        <div className="homeworkListForm_l">
+                            <div className="homeworkListDate">
+                                {stampToDate(study.date)}
                             </div>
                         </div>
-                    </Link>
-                    :
-                    <Link to={`/Study/${study.id}`} >
-                        <div className="homeworkListForm2" key={study.id}>
-                            <div className="homeworkListForm_l">
-                                <div className="homeworkListDate">
-                                    {stampToDate(study.date)}
-                                </div>
+                        <div className="homeworkListForm_r">
+                            <div className="homeworkListTag">
+                                {study.chapter} {study.type}
                             </div>
-                            <div className="homeworkListForm_r">
-                                <div className="homeworkListTag">
-                                    {study.chapter} {study.type}
-                                </div>
-                                <div className="homeworkListTitle">
-                                    {study.title}
-                                </div>
-                                <div className="homeworkListMTag">
-                                    📚 {study.page}
-                                </div>
+                            <div className="homeworkListTitle">
+                                {study.title}
+                            </div>
+                            <div className="homeworkListMTag">
+                                📚 {study.page}
                             </div>
                         </div>
-                    </Link>
+                    </div>
+                </Link>
             )}
         </>
     )

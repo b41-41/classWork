@@ -32,48 +32,27 @@ const HomeworkList = () => {
         <>
             {/* 숙제 리스트 */}
             {submits.map((homework, i) =>
-                i % 2 === 0 ?
-                    <Link to={`/Homework/${homework.id}`} >
-                        <div className="homeworkListForm" key={homework.id}>
-                            <div className="homeworkListForm_l">
-                                <div className="homeworkListDate">
-                                    ~{stampToDate(homework.deadline)}
-                                </div>
-                            </div>
-                            <div className="homeworkListForm_r">
-                                <div className="homeworkListTag">
-                                    {homework.type}
-                                </div>
-                                <div className="homeworkListTitle">
-                                    {homework.title}
-                                </div>
-                                <div className="homeworkListMTag">
-                                    {chkDeadline(homework.deadline)}
-                                </div>
+                <Link to={`/Homework/${homework.id}`} >
+                    <div className={i % 2 === 0 ? "homeworkListForm" : "homeworkListForm2"} key={homework.id}>
+                        <div className="homeworkListForm_l">
+                            <div className="homeworkListDate">
+                                ~{stampToDate(homework.deadline)}
                             </div>
                         </div>
-                    </Link>
-                    :
-                    <Link to={`/Homework/${homework.id}`} >
-                        <div className="homeworkListForm2" key={homework.id}>
-                            <div className="homeworkListForm_l">
-                                <div className="homeworkListDate">
-                                    ~{stampToDate(homework.deadline)}
-                                </div>
+                        <div className="homeworkListForm_r">
+                            <div className="homeworkListTag">
+                                {homework.type}
                             </div>
-                            <div className="homeworkListForm_r">
-                                <div className="homeworkListTag">
-                                    {homework.type}
-                                </div>
-                                <div className="homeworkListTitle">
-                                    {homework.title}
-                                </div>
-                                <div className="homeworkListMTag">
-                                    {chkDeadline(homework.deadline)}
-                                </div>
+                            <div className="homeworkListTitle">
+                                {homework.title}
+                            </div>
+                            <div className="homeworkListMTag">
+                                {chkDeadline(homework.deadline)}
                             </div>
                         </div>
-                    </Link>
+                    </div>
+                </Link>
+
             )}
         </>
     )
