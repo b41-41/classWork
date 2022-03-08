@@ -17,14 +17,13 @@ const QuestionSubmit = ({ match, userObj }) => {
         try {
             const data = {
                 content: submit,
-                data: Date.now(),
+                createAt: Date.now(),
                 uid: UID,
                 writer: userInfo.displayName,
                 avatar: userInfo.reloadUserInfo.photoUrl,
             }
             const loadCollection = collection(dbService, "question", QuestionID, "reply");
 
-            //숙제 내용 DB에 작성
             const docRef = await addDoc(loadCollection, data);
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
