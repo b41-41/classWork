@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { dbService } from 'fbase';
-import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+import React from "react";
 import { Route, Link } from "react-router-dom";
 import StudyList from './StudyList';
 import NotiSearchBar from 'component/NotiSearchBar';
@@ -10,35 +8,6 @@ import { ChangeCurrentMenu } from 'redux/utils';
 
 const Study = ({ match }) => {
     ChangeCurrentMenu("STUDY");
-    //useState
-    const [submits, setSubmits] = useState([]);
-    const [studyContents, setStudyContents] = useState({
-        chapter: "1과",
-        content: "내용입니다.",
-        date: null,
-        title: "보고 싶은 내용을 선택하세요.",
-        type: "",
-        page: "page",
-    });
-
-    //숙제 리스트 받아오기
-    const homeworkDB = collection(dbService, "study")
-    const getSubmits = async () => {
-        const dbSubmits = await getDocs(homeworkDB);
-        dbSubmits.forEach((document) => {
-            const submitObject = {
-                ...document.data(),
-                id: document.id,
-            };
-            setSubmits((prev) => [submitObject, ...prev]);
-        });
-    };
-
-
-    //db값 얻어오기 useEffect
-    useEffect(() => {
-        getSubmits();
-    }, []);
 
     return (
         <>

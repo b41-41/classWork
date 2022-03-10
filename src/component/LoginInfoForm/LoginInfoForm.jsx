@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const LoginInfoForm = () => {
   const userState = useSelector((state) => state.userInfo);
-  const userInfo = userState.userInfo;
+  const userInfo = userState.user;
 
   return (
     <div className="userInfo">

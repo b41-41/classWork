@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { authService } from "fbase";
 import AppRouter from 'component/Router';
 import Loading from 'component/Loading';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateLogin, updateUserInfo } from 'redux/slices/user';
 import 'css/style.css';
 import 'css/nav.css';
@@ -19,6 +19,7 @@ function App() {
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
+      // console.log(user);
       if (user) {
         dispatch(updateLogin(true));
         dispatch(updateUserInfo(user));

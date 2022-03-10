@@ -12,7 +12,7 @@ const HomeworkSubmit = ({ match }) => {
     const [submit, setSubmit] = useState("");
     const userState = useSelector((state) => state.userInfo);
     const userInfo = userState.userInfo;
-    const HWId = match.params.id;
+    // const HWId = match.params.id;
     const { HWSubmitCheck } = location.state;
     //값
     const HomeworkID = match.params.id;

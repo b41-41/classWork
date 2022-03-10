@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isLogin: false, //로그인 여부
-    userInfo: null //유저 정보
+    user: null //유저 정보
 
 }
 
@@ -14,7 +14,7 @@ export const userSlice = createSlice({
             state.isLogin = action.payload;
         },
         updateUserInfo: (state, action) => {
-            state.userInfo = action.payload;
+            state.user = action.payload;
         },
     },
 });

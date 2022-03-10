@@ -25,18 +25,18 @@ const Login = () => {
             if (newAccount) {
                 //Create Account
                 data = await createUserWithEmailAndPassword(auth, email, password);
-                // getAuth()
-                //     .createUser({
-                //         email,
-                //         password,
-                //         // displayName: email
-                //     })
-                //     .then((userRecord) => {
-                //         console.log('successfully created new user:', userRecord.uid);
-                //     })
-                //     .catch((error) => {
-                //         console.log(error);
-                //     })
+                getAuth()
+                    .createUser({
+                        email,
+                        password,
+                        // displayName: email
+                    })
+                    .then((userRecord) => {
+                        console.log('successfully created new user:', userRecord.uid);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
             } else {
                 //Login
                 data = await signInWithEmailAndPassword(auth, email, password);
@@ -44,8 +44,8 @@ const Login = () => {
             console.log(data);
         } catch (error) {
             setError(error.message);
-
         }
+        console.error(error);
     }
 
     const toggleAccount = () => setNewAccount((prev) => !prev)
