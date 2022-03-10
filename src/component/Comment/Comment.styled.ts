@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { THEME_COLOR_PINK } from "const/Theme";
+import { THEME_COLOR_PINK, THEME_COLOR_RED } from "const/Theme";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -60,4 +60,15 @@ export const CommentWrapper = styled.div`
     padding-top: 30px;
     border-top: solid 1px #c2c2c2;
   }
+`;
+
+export const DeleteBtnIcon = styled.div`
+  display: inline-block;
+  margin: 0 5px;
+  padding: 2px;
+  background-color: ${THEME_COLOR_RED};
+  color: white;
+  font-size: 8px;
+  border-radius: 5px;
+  cursor: pointer;
 `;
