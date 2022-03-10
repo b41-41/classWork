@@ -1,5 +1,5 @@
 import React from "react";
-import CommentWriteForm from 'component/Comment/CommentWriteForm';
+import { CommentWriteForm } from 'component';
 
 const QuestionSubmit = ({ match }) => {
     const postId = match.params.id;

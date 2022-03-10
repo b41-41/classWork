@@ -1,8 +1,8 @@
 import React from "react";
-import { CommentType } from "./Comment.type";
+import {DeleteComment} from 'component';
 import { stampToDate_hhmmss } from "utils";
+import { CommentType } from "./Comment.type";
 import * as S from "./Comment.styled";
-import deleteComment from 'component/DeleteComment';
 
 const Comment = ({ comments, uid, menuId, postId }: CommentType) => {
   return (
@@ -20,7 +20,7 @@ const Comment = ({ comments, uid, menuId, postId }: CommentType) => {
                     {item.writer}
                     &nbsp;
                     {item.uid === uid && (
-                      <S.DeleteBtnIcon onClick={()=>{deleteComment(menuId, postId, item.id)}}>
+                      <S.DeleteBtnIcon onClick={()=>{DeleteComment(menuId, postId, item.id)}}>
                       삭제
                       </S.DeleteBtnIcon>
                     )}
