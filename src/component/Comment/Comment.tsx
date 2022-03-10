@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { CommentType } from "./Comment.type";
-import { stampToDate_hhmmss, stampToDate_yymmdd } from "utils";
+import { stampToDate_hhmmss } from "utils";
 import * as S from "./Comment.styled";
+import deleteComment from 'component/DeleteComment';
 
-const Comment = ({ comments }: CommentType) => {
+const Comment = ({ comments, uid, menuId, postId }: CommentType) => {
   return (
     comments.length > 0 && (
       <S.Wrapper>
@@ -15,10 +16,18 @@ const Comment = ({ comments }: CommentType) => {
               <S.WriterWrapper>
                 <S.Avatar />
                 <S.WriteInfoWrapper>
-                  <S.Writter>{item.writer}</S.Writter>
+                  <S.Writter>
+                    {item.writer}
+                    &nbsp;
+                    {item.uid === uid && (
+                      <S.DeleteBtnIcon onClick={()=>{deleteComment(menuId, postId, item.id)}}>
+                      삭제
+                      </S.DeleteBtnIcon>
+                    )}
+                  </S.Writter>
                   <S.Date>
                     {stampToDate_hhmmss(item.createAt)}
-                    작성
+                    &nbsp;작성
                   </S.Date>
                 </S.WriteInfoWrapper>
               </S.WriterWrapper>

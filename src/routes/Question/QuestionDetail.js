@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { dbService } from 'fbase';
+import { dbService, authService } from 'fbase';
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { Comment } from 'component';
 import { stampToDate_yymmdd } from 'utils';
@@ -12,6 +12,7 @@ const QuestionDetail = ({ match }) => {
     const [comments, setComments] = useState([]);
 
     const key = match.params.id;
+    const UID = authService.currentUser.uid;
 
     //본문 내용 읽어오기 
     const sendQuestionContents = async () => {
@@ -65,7 +66,7 @@ const QuestionDetail = ({ match }) => {
                 {questionContents.content}
             </div>
             {/* 댓글 영역 */}
-            <Comment comments={comments} />
+            <Comment comments={comments} uid={UID} menuId="question" postId={key} />
             <Link to={{
                 pathname: `/Question/${key}/comment`,
                 state: { key }

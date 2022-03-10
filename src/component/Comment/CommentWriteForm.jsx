@@ -10,7 +10,7 @@ const CommentWriteForm = ({menu, menuId, postId}) => { //question 메뉴인 경�
     const history = useHistory();
     const UID = authService.currentUser.uid;
     const userState = useSelector((state) => state.userInfo);
-    const userInfo = userState.userInfo;
+    const userInfo = userState.user;
 
     const onSubmit = async (event) => {
         event.preventDefault();
