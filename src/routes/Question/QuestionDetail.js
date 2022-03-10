@@ -48,7 +48,7 @@ const QuestionDetail = ({ match }) => {
     useEffect(() => {
         sendQuestionContents();
         sendComment();
-    }, [key])
+    }, [match.url])
 
 
 
