@@ -6,7 +6,7 @@ import * as S from "./Comment.styled";
 
 const Comment = ({ comments, uid, menuId, postId }: CommentType) => {
   return (
-    comments.length > 0 && (
+    comments?.length > 0 && (
       <S.Wrapper>
         <S.BtnIcon>댓글 {comments.length}개</S.BtnIcon>
 

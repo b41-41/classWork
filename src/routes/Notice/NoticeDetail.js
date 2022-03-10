@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { dbService } from 'fbase';
-import { doc, getDoc } from "firebase/firestore"
+import { dbService, authService } from 'fbase';
+import { doc, getDoc, collection, getDocs } from "firebase/firestore"
 import { stampToDate_yymmdd } from 'utils';
+import { Comment } from 'component';
 
 const NoticeDetail = ({ match }) => {
+    const NOTICE = "notice";
 
     const [noticeContents, setNoticeContents] = useState({});
-
-    // //DB Load
-    // const noticeDB = collection(dbService, "notice")
+    const [comments, setComments] = useState([])
 
     const key = match.params.id;
+    const UID = authService.currentUser.uid;
 
-    //본문 내용 읽어오기 (onClick Event)
+    //본문 내용 읽어오기
     const sendNoticeContents = async () => {
         try {
             const HWref = doc(dbService, "notice", `${key}`);
@@ -24,11 +25,31 @@ const NoticeDetail = ({ match }) => {
         }
     };
 
+    //코멘트 읽어오기
+    const sendComment = async () => {
+        try {
+            const commentRef = collection(dbService, NOTICE, key, "reply");
+            const getComment = await getDocs(commentRef);
+            const commentArray = [];
+            setComments([]); //코멘트 초기화
+            getComment.forEach(data => {
+                const datas = {
+                    ...data.data(),
+                    id: data.id,
+                };
+                commentArray.push(datas);
+            })
+            setComments(commentArray);
+        } catch (e) {
+            console.error("코멘트 불러오기 오류 : ", e);
+        }
+    }
+
+    //주소 값이 바뀔 때마다 코멘트, 본문 내용 읽어오기
     useEffect(() => {
         sendNoticeContents();
-    }, [key])
-
-
+        sendComment();
+    }, [match.url])
 
     return (
         <>
@@ -41,6 +62,8 @@ const NoticeDetail = ({ match }) => {
             <div className="homeworkContents">
                 {noticeContents.content}
             </div>
+            {/* 댓글 영역 */}
+            <Comment id="comment" comments={comments} uid={UID} menuId="notice" postId={key} />
             <Link to={{
                 pathname: `/Notice/${key}/comment`,
                 state: { key }
