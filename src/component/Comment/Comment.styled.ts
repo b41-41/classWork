@@ -51,6 +51,7 @@ export const Date = styled.div`
 
 export const Content = styled.div`
   margin: 25px 0 0 0;
+  font-size: 14px;
   line-height: 12px;
 `;
 

@@ -32,7 +32,7 @@ const Comment = ({ comments, uid, menuId, postId }: CommentType) => {
                 </S.WriteInfoWrapper>
               </S.WriterWrapper>
               <S.Content>
-                <pre>{item.content}</pre>
+                {item.content}
               </S.Content>
             </S.CommentWrapper>
           );
