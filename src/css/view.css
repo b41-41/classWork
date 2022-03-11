@@ -78,7 +78,7 @@
 
 .lastClass:hover {
   cursor: pointer;
-  transform: scale(1.01);
+  background-color: rgb(236, 236, 236);
 }
 
 /* 다음 수업 */
@@ -95,7 +95,7 @@
 
 .nextClass:hover {
   cursor: pointer;
-  transform: scale(1.01);
+  background-color: rgb(236, 236, 236);
 }
 
 /* 수업 타이틀, 내용 */

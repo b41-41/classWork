@@ -99,14 +99,15 @@
 }
 
 .nnhForm__notice--content {
-  transition: 400ms;
-  margin: 15px 0;
+  padding: 15px 0;
   list-style: none;
+  transition: 400ms;
+  border-radius: 5px;
 }
 
 .nnhForm__notice--content:hover {
   cursor: pointer;
-  transform: scale(0.95);
+  background-color: #e6e6e6;
 }
 
 .nnhForm__notice--content-titlebox {
@@ -124,11 +125,12 @@
 }
 
 .nnhForm__notice--content-date {
+  width: 65px;
+  padding-top: 3px;
   color: #b7b9bd;
   font-size: 0.4rem;
   align-items: flex-end;
   text-align: right;
-  padding-top: 3px;
 }
 
 .nnhForm__notice--content-text {
@@ -160,7 +162,6 @@
 .nnhForm__homework--box:hover {
   cursor: pointer;
   background-color: #5b6297;
-  transform: scale(1.05);
 }
 
 .nnhForm__homework--box2 {
@@ -177,15 +178,15 @@
 .nnhForm__homework--box2:hover {
   cursor: pointer;
   background-color: #e6a189;
-  transform: scale(1.05);
 }
 
 .nnhForm__homework--box-title {
   display: block;
+  margin: 3px;
   color: white;
   font-size: 1rem;
   font-weight: bold;
-  margin: 3px;
+  text-overflow: ellipsis;
 }
 
 .nnhForm__homework--box-date {
