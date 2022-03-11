@@ -36,7 +36,7 @@ const HomeworkList = () => {
                     <div className={i % 2 === 0 ? "homeworkListForm" : "homeworkListForm2"} key={homework.id}>
                         <div className="homeworkListForm_l">
                             <div className="homeworkListDate">
-                                ~{stampToDate(homework.deadline)}
+                                {homework.deadline.toDate() < new Date() ? "마감" : `~${stampToDate(homework.deadline)}`}
                             </div>
                         </div>
                         <div className="homeworkListForm_r">
