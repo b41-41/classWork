@@ -34,7 +34,7 @@ const QuestionList = () => {
                         <div class="boardListNumber">{question.number}</div>
                         <div class="boardListTitle">{question.title}</div>
                         <div class="boardListDate">
-                            {stampToDate_yymmdd(question.date)}
+                            {stampToDate_yymmdd(question.createAt)}
                             <span class="boardListWriter">{question.writer}</span>
                         </div>
                     </div>

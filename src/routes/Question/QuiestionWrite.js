@@ -1,28 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { dbService, authService } from 'fbase';
-import { collection, addDoc } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { collection, addDoc, getDocs, Timestamp } from "firebase/firestore";
 
 const QuestionWrite = () => {
     const UID = authService.currentUser.uid;
 
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
+    const [docsData, setDocsData] = useState([]);
 
+    const userState = useSelector((state) => state.userInfo);
+    const userInfo = userState.user;
+
+    const loadCollection = collection(dbService, "question");
+
+    const getLatestNum = async () => {
+        //마지막 작성 글 번호 가져오기
+        const readDocSnap = await getDocs(loadCollection);
+        readDocSnap.forEach(doc => {
+            const docs = {
+                ...doc.data(),
+            }
+            setDocsData((prev) => [docs, ...prev])
+        })
+    }
 
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
             const data = {
-                title: title,
-                text: content,
-                data: Date.now(),
-                uid: UID
+                title,
+                content,
+                createAt: Timestamp.fromDate(new Date()),
+                number: docsData[0].number + 1,
+                writer: userInfo.displayName,
+                uid: UID,
             }
-            const loadCollection = collection(dbService, "question");
-
             //숙제 내용 DB에 작성
-            const docRef = await addDoc(loadCollection, data);
-            console.log("Document written with ID: ", docRef.id);
+            const addDocRef = await addDoc(loadCollection, data);
+            console.log("Document written with ID: ", addDocRef.id);
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -39,6 +56,10 @@ const QuestionWrite = () => {
         const { target: { value } } = e;
         setContent(value);
     };
+
+    useEffect(() => {
+        getLatestNum()
+    }, [])
 
 
     return (
