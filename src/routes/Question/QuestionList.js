@@ -29,7 +29,7 @@ const QuestionList = () => {
         <>
             {/* 숙제 리스트 */}
             {submits.map(question =>
-                <Link to={`/Question/${question.id}`}>
+                <Link to={`/Question/content/${question.id}`}>
                     <div class="boardForm" key={question.id}>
                         <div class="boardListNumber">{question.number}</div>
                         <div class="boardListTitle">{question.title}</div>

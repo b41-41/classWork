@@ -54,11 +54,11 @@ const Question = ({ match }) => {
                         render={({ match }) => <QuestionWrite {...{ match }} />}
                     />
                     <Route
-                        path={`${match.path}/:id`}
+                        path={`${match.path}/content/:id`}
                         render={({ match }) => <QuestionDetail {...{ match }} />}
                     />
                     <Route
-                        path={`${match.path}/:id/comment`}
+                        path={`${match.path}/content/:id/comment`}
                         render={({ match, userObj }) => <QuestionSubmit {...{ match, userObj }} />}
                     />
                 </div>
