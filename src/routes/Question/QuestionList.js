@@ -40,6 +40,8 @@ const QuestionList = () => {
                     </div>
                 </Link>
             )}
+            <br />
+            <Link to={`/Question/write`}><div align="right">글쓰기</div></Link>
         </>
     )
 }

@@ -216,6 +216,17 @@
   border: white;
   box-shadow: 1px 1px 4px #eeedeb;
 }
+.HomeworkSubmitTextArea__title {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 15px;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 15px;
+  border: white;
+  box-shadow: 1px 1px 4px #eeedeb;
+  
+}
 
 .HomeworkSubmitTextArea__button {
   width: 100%;
