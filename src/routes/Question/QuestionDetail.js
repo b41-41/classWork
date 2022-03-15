@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService, authService } from 'fbase';
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { Comment } from 'component';
+import { Comment, DeletePost } from 'component';
 import { stampToDate_yymmdd } from 'utils';
 
 const QuestionDetail = ({ match }) => {
@@ -51,8 +51,6 @@ const QuestionDetail = ({ match }) => {
         sendComment();
     }, [match.url])
 
-
-
     return (
         <>
             <div className="homeworkTitleBar">
@@ -61,7 +59,7 @@ const QuestionDetail = ({ match }) => {
                     {stampToDate_yymmdd(questionContents.createAt)}
                 </span>
                 <span className="homeworkTitleBar__dday">{questionContents.writer}</span>
-                {questionContents.uid === UID && <button className="homeworkTitleBar__dday">삭제</button>}
+                {questionContents.uid === UID && <button className="homeworkTitleBar__delete" onClick={() => DeletePost('question', key)}>삭제</button>}
             </div>
             <div className="homeworkContents">
                 {questionContents.content}

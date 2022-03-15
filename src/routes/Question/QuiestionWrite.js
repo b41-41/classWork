@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { dbService, authService } from 'fbase';
 import { useSelector } from "react-redux";
 import { collection, addDoc, getDocs, Timestamp } from "firebase/firestore";
+import { useHistory } from 'react-router-dom';
 
 const QuestionWrite = () => {
+    const QUESTION = 'question';
     const UID = authService.currentUser.uid;
 
     const [content, setContent] = useState('');
@@ -45,6 +47,7 @@ const QuestionWrite = () => {
         }
         setContent('');
         setTitle('');
+        window.location.replace(`/${QUESTION}`);
     };
 
     const onChangeTitle = (e) => {
