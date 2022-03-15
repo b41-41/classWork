@@ -63,7 +63,8 @@ export const CommentWrapper = styled.div`
   }
 `;
 
-export const DeleteBtnIcon = styled.div`
+export const DeleteBtnIcon = styled.button`
+  all: unset;
   display: inline-block;
   margin: 0 5px;
   padding: 2px;
