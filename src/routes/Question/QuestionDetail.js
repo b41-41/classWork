@@ -58,7 +58,7 @@ const QuestionDetail = ({ match }) => {
             <div className="homeworkTitleBar">
                 <div className="homeworkTitleBar__title">{questionContents.title}</div><br />
                 <span className="homeworkTitleBar__deadline">
-                    {stampToDate_yymmdd(questionContents.date)}
+                    {stampToDate_yymmdd(questionContents.createAt)}
                 </span>
                 <span className="homeworkTitleBar__dday">{questionContents.writer}</span>
             </div>
