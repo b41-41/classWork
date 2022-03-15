@@ -61,6 +61,7 @@ const QuestionDetail = ({ match }) => {
                     {stampToDate_yymmdd(questionContents.createAt)}
                 </span>
                 <span className="homeworkTitleBar__dday">{questionContents.writer}</span>
+                {questionContents.uid === UID && <button className="homeworkTitleBar__dday">삭제</button>}
             </div>
             <div className="homeworkContents">
                 {questionContents.content}
@@ -68,12 +69,12 @@ const QuestionDetail = ({ match }) => {
             {/* 댓글 영역 */}
             <Comment comments={comments} uid={UID} menuId="question" postId={key} />
             <Link to={{
-                pathname: `/Question/${key}/comment`,
+                pathname: `/Question/content/${key}/comment`,
                 state: { key }
             }}>
                 <div className="homeworkSubmit">
                     <div className="homeworkSubmitL">
-                        <img width="50px" src="../img/reply-message.png" alt="send" />
+                        <img width="50px" src="/img/reply-message.png" alt="send" />
                     </div>
                     <div className="homeworkSubmitR">
                         댓글 남기기
