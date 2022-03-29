@@ -84,38 +84,34 @@ const Home = ({ match }) => {
                     <h2>NOTICE & HOMEWORK</h2>
                     <div className="nnhForm">
                         <ul className="nnhForm__notice">
-                            {noticeContents.map((notice, i) =>
-                                i < 3 ?
-                                    <Link to={{ pathname: `/Notice/${notice.id}` }}>
-                                        <li className="nnhForm__notice--content">
-                                            <div className="nnhForm__notice--content-titlebox">
-                                                <span className="nnhForm__notice--content-title">{notice.title}</span>
-                                                <span className="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
-                                            </div>
-                                            <span className="nnhForm__notice--content-text">{notice.content}</span>
-                                        </li>
-                                    </Link>
-                                    : ''
+                            {noticeContents.slice(0, 3).map((notice) =>
+                                <Link key={notice.id} to={{ pathname: `/Notice/${notice.id}` }}>
+                                    <li className="nnhForm__notice--content">
+                                        <div className="nnhForm__notice--content-titlebox">
+                                            <span className="nnhForm__notice--content-title">{notice.title}</span>
+                                            <span className="nnhForm__notice--content-date">{stampToDate_yymmdd(notice.date)}</span>
+                                        </div>
+                                        <span className="nnhForm__notice--content-text">{notice.content}</span>
+                                    </li>
+                                </Link>
                             )}
                         </ul>
                         <ul className="nnhForm__homework">
-                            {homeworkContents.map((homework, i) =>
-                                i < 2 ?
-                                    (i + 1) % 2 !== 0 ?
-                                        <Link to={{ pathname: `/Homework/${homework.id}` }}>
-                                            <li className="nnhForm__homework--box">
-                                                <span className="nnhForm__homework--box-title">{homework.title}</span>
-                                                <span className="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
-                                            </li>
-                                        </Link>
-                                        :
-                                        <Link to={{ pathname: `/Homework/${homework.id}` }}>
-                                            <li className="nnhForm__homework--box2">
-                                                <span className="nnhForm__homework--box-title">{homework.title}</span>
-                                                <span className="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
-                                            </li>
-                                        </Link>
-                                    : ''
+                            {homeworkContents.slice(0, 2).map((homework, i) =>
+                                (i + 1) % 2 !== 0 ?
+                                    <Link key={homework.id} to={{ pathname: `/Homework/${homework.id}` }}>
+                                        <li className="nnhForm__homework--box">
+                                            <span className="nnhForm__homework--box-title">{homework.title}</span>
+                                            <span className="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                        </li>
+                                    </Link>
+                                    :
+                                    <Link key={homework.id} to={{ pathname: `/Homework/${homework.id}` }}>
+                                        <li className="nnhForm__homework--box2">
+                                            <span className="nnhForm__homework--box-title">{homework.title}</span>
+                                            <span className="nnhForm__homework--box-date">{stampToDate_yymmdd(homework.date)}</span>
+                                        </li>
+                                    </Link>
                             )}
 
 
@@ -145,24 +141,22 @@ const Home = ({ match }) => {
                         </div>
                     </div>
                     <h2>LAST CLASS</h2>
-                    {studyContents.map((data, i) => i === 0 ?
-                        <Link to={{ pathname: `/Study/${data.id}` }}>
-                            <div className="lastClass">
-                                <div className="lastClass_icon">
-                                    <img height="100px" src='./img/class.png' alt="next class" />
-                                </div>
-                                <div className="lastClass_content">
-                                    <span className="class_title">지난 수업</span>
-                                    <div className="class_contents">{data.title}</div>
-                                </div>
+                    {studyContents.slice(0, 1).map((data) => <Link key={data.id} to={{ pathname: `/Study/${data.id}` }}>
+                        <div className="lastClass">
+                            <div className="lastClass_icon">
+                                <img height="100px" src='./img/class.png' alt="next class" />
                             </div>
-                        </Link>
-                        : '')}
+                            <div className="lastClass_content">
+                                <span className="class_title">지난 수업</span>
+                                <div className="class_contents">{data.title}</div>
+                            </div>
+                        </div>
+                    </Link>)}
                     <h2>NEXT CLASS</h2>
                     <div className="nextClass">
                         <div className="nextClass_content">
                             <span className="class_title">다음 수업</span>
-                            <span className="class_contents">{studyContents.map((data, i) => i === 0 ? data.next : '')}</span>
+                            <span className="class_contents">{studyContents.slice(0, 1).map((data) => data.next)}</span>
                         </div>
                         <div className="nextClass_icon">
                             <img height="100px" src='./img/nextclass.png' alt="next class" />
