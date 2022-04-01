@@ -32,7 +32,7 @@ const HomeworkList = () => {
         <>
             {/* 숙제 리스트 */}
             {submits.map((homework, i) =>
-                <Link to={`/Homework/${homework.id}`} >
+                <Link key={homework.id} to={`/Homework/${homework.id}`} >
                     <div className={i % 2 === 0 ? "homeworkListForm" : "homeworkListForm2"} key={homework.id}>
                         <div className="homeworkListForm_l">
                             <div className="homeworkListDate">
