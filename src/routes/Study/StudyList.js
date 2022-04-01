@@ -29,7 +29,7 @@ const StudyList = () => {
     return (
         <>
             {submits.map((study, i) =>
-                <Link to={`/Study/${study.id}`} >
+                <Link key={study.id} to={`/Study/${study.id}`} >
                     <div className={i % 2 === 0 ? "homeworkListForm" : "homeworkListForm2"} key={study.id}>
                         <div className="homeworkListForm_l">
                             <div className="homeworkListDate">

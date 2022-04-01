@@ -31,7 +31,7 @@ const NoticeList = () => {
         <>
             {/* 숙제 리스트 */}
             {submits.map(notice =>
-                <Link to={`/Notice/${notice.id}`}>
+                <Link key={notice.id} to={`/Notice/${notice.id}`}>
                     <div class="boardForm" key={notice.id}>
                         <div class="boardListNumber">{notice.number}</div>
                         <div class="boardListTitle">{notice.title}</div>

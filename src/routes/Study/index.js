@@ -23,10 +23,10 @@ const Study = ({ match }) => {
 
     return (
         <>
-            <div class="list">
-                <div class="listForm">
+            <div className="list">
+                <div className="listForm">
                     <Link to="/Study">
-                        <div class="currMenu">
+                        <div className="currMenu">
                             STUDY
                         </div>
                     </Link>

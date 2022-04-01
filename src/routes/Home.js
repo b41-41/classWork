@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dbService } from 'fbase';
 import { collection, getDocs } from "firebase/firestore";
-import { Calendar } from 'component';
+// import { Calendar } from 'component';
 import { stampToDate_yymmdd } from 'utils';
 import { TEACHER_NAME, TEACHER_EMAIL } from 'const/teacherInfo';
 import { ChangeCurrentMenu } from 'redux/utils';
@@ -117,10 +117,10 @@ const Home = ({ match }) => {
 
                         </ul>
                     </div>
-                    <h2>CALENDER</h2>
+                    {/* <h2>CALENDER</h2>
                     <div className="calender">
                         <Calendar />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <article>
