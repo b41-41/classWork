@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     isLogin: false, //로그인 여부
     user: null, //유저 정보
-    isAdmin: true, //관리자 여부
+    isAdmin: false, //관리자 여부
 }
 
 export const userSlice = createSlice({
