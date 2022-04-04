@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { stampToDate_yymmdd } from 'utils';
 
 const NoticeList = () => {
-    const [submits, setSubmits] = useState([]);
+    const [dataList, setDataList] = useState([]);
 
     //숙제 리스트 받아오기
-    const noticeDB = collection(dbService, "notice")
-    const getSubmits = async () => {
-        const dbSubmits = await getDocs(noticeDB);
-        dbSubmits.forEach((document) => {
+    const noticeDB = query(collection(dbService, "notice"), orderBy("number"))
+    const getDataList = async () => {
+        const dbDataList = await getDocs(noticeDB);
+        dbDataList.forEach((document) => {
             const submitObject = {
                 ...document.data(),
                 id: document.id,
             };
-            setSubmits((prev) => [submitObject, ...prev]);
+            setDataList((prev) => [submitObject, ...prev]);
         });
     };
 
     //db값 얻어오기 useEffect
     useEffect(() => {
-        getSubmits();
+        setDataList([]);
+        getDataList();
     }, [])
-
-
 
     return (
         <>
             {/* 숙제 리스트 */}
-            {submits.map(notice =>
+            {dataList.map(notice =>
                 <Link key={notice.id} to={`/Notice/${notice.id}`}>
                     <div class="boardForm" key={notice.id}>
                         <div class="boardListNumber">{notice.number}</div>
